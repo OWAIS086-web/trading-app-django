@@ -1,0 +1,162 @@
+
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/edit_profile.css' %}>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+{% endblock %}
+
+{% block banner-content %} {% endblock %}
+{% block body-content %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="container main-section">
+    <h1>Edit Profile</h1>
+</div>
+<div class="container container-edit-profile">
+    <div class="col-lg-5 col-md-5">
+
+        <div class="left-section">
+
+            <div class="form">
+                <form method="post" enctype="multipart/form-data" action="{% url 'users:edit_profile' %}">
+                {% csrf_token %}
+                <div class="profile-picture" >
+                    {% if user_media_instance %}
+                        {% if user_media_instance.media_file %}
+                        <img id="profile-picture-img" src="{{ user_media_instance.media_file.url }}" alt="media file error">
+                        {% endif %}
+                    {% endif %}
+                    
+                    <div class="plus-icon">{{ media_form.media_file }}</div>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="first_name">Name</label>
+                    <input type="text" name="first_name" value="{{ profile_form.first_name.value }}" class="form-control" maxlength="100" required id="id_first_name">
+                </div>
+                <p style="color: red;">{{ form.errors.telephone }}</p>
+
+                <div class="form-group">
+                    <label class="form-label" for="display_name">Display Name</label>
+                    <input type="text" name="display_name" value="{{ profile_form.display_name.value }}" class="form-control" maxlength="254" required id="id_display_name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="telephone">Phone Number</label>
+                    <input type="text" name="telephone" value="{{ profile_form.telephone.value }}" class="form-control" maxlength="20" required id="id_telephone" onkeypress="return PhoneNumberOnly()">
+                  </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" name="email" value="{{ user_form.email.value }}" class="form-control" maxlength="100" readonly required id="id_email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="street">Address</label>
+                    <input type="text" name="street" value="{{ profile_form.street.value }}" class="form-control" maxlength="100" required id="id_street" >
+                </div>
+                <button type="submit" class="btn btn-dark btn-lg">Update Now</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-7 col-md-7">
+        <div class="right-section">
+            <div class="form-group">
+              <label class="form-label" for="id_biography">Strategy</label>
+              <textarea name="biography" maxlength="1024" cols="50" rows="15" placeholder="Strategy" class="form-control" id="id_biography">{{ profile_form.biography.value }}</textarea>
+              <span id="wordCountMessage" style="color: red;"></span>
+            </div>
+          </div>
+    </div>
+</form>
+
+</div>
+<script>
+    const textarea = document.getElementById("id_biography");
+const wordCountMessage = document.getElementById("wordCountMessage");
+
+textarea.addEventListener("input", function() {
+  const maxLength = 1024;
+  const words = textarea.value.trim().split(/\s+/);
+  const wordCount = words.length;
+
+  if (wordCount > maxLength) {
+    wordCountMessage.textContent = `Exceeded the maximum word limit of ${maxLength} words.`;
+  } else {
+    wordCountMessage.textContent = "";
+  }
+});
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const pictureImg = document.getElementById('profile-picture-img');
+        const pictureUpload = document.getElementById('media-file-upload');
+        const saveButton = document.getElementById('save-button');
+
+        pictureUpload.addEventListener('change', () => {
+            const file = pictureUpload.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                pictureImg.src = e.target.result;
+            };
+
+            if (file) {
+                // Validate file type
+                if (file.type === 'image/jpeg' || file.type === 'image/png') {
+                    // Validate file size (1 MB)
+                    const maxSize = 1 * 1024 * 1024; // 1 MB in bytes
+                    if (file.size <= maxSize) {
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert('File size exceeds 1 MB. Please choose a smaller file.');
+                        pictureUpload.value = ''; // Clear the file input
+                    }
+                } else {
+                    alert('Only JPG and PNG images are allowed.');
+                    pictureUpload.value = ''; // Clear the file input
+                }
+            }
+        });
+
+        saveButton.addEventListener('click', () => {
+            // Here you would save the changes, e.g., submit the form via AJAX or a form submit action.
+            // Once the changes are saved, you can update the user.profile.avatar.url with the new image URL.
+            // Remember to handle server-side processing for image uploads and updates.
+        });
+    });
+
+        function NumberOnly() {
+            var AsciiValue = event.keyCode
+            if ((AsciiValue >= 48 && AsciiValue <= 57) || (AsciiValue == 8 || AsciiValue == 46 || AsciiValue == 127))
+                event.returnValue = true;
+            else
+                event.returnValue = false;
+        }
+
+        function PhoneNumberOnly() {
+            var AsciiValue = event.keyCode
+            if ((AsciiValue >= 48 && AsciiValue <= 57) || (AsciiValue == 43 || AsciiValue == 44 || AsciiValue == 45 || AsciiValue == 8 || AsciiValue == 127))
+                event.returnValue = true;
+            else
+                event.returnValue = false;
+        }
+        function CNICNumberOnly() {
+            var AsciiValue = event.keyCode
+            if ((AsciiValue >= 48 && AsciiValue <= 57) || (AsciiValue == 45 || AsciiValue == 8 || AsciiValue == 127))
+                event.returnValue = true;
+            else
+                event.returnValue = false;
+        }
+</script>
+
+{% endblock %}

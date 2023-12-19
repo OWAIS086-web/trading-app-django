@@ -1,0 +1,127 @@
+{% extends "account/base.html" %}
+{% load bootstrap5 %}
+{% load i18n %}
+{% load static %}
+{% comment %} {% block head_title %}{% trans "User Registration | Priority Gold Plus" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block head_custom_css %}
+<link rel="stylesheet" type="text/css" href={% static 'css/signup.css' %}>
+{% endblock %}
+
+{% block content %}
+    <div class="back-button">
+        <a href="/"><img src={% static 'img/back-button.png' %} alt="back"></a>
+    </div>
+    <div class="back-heading">Back</div>
+
+
+    <div class="container container-sign">
+        <div class="col-lg-5">
+            <div class="left-section">
+                <div class="logo">
+                    <img src={% static 'img/group-8.svg' %} alt="Logo">
+                </div>
+                <div class="form">
+                    <h2>{% trans "Create an Account" %}</h2>
+                    <p>{% trans "Please fill the form to create you account." %}</p>
+                    <form class="login" method="POST" method="POST" action="{% url 'users:sign_up'%}">
+                        {% csrf_token %}
+
+                        {% comment %} <div class="form-group" style=" margin-bottom: 0px;">
+                            <label class="form-label-email">{{form.username.label}}</label>
+                            {{form.username}}
+                        </div> {% endcomment %}
+
+                        {% comment %} <div class="form-group" style=" margin-bottom: 0px;">
+                        <label class="form-label-email">{{form.email.label}}</label>
+                        {{form.email}}
+                        </div> {% endcomment %}
+                        <div class="form-group"><label class="form-label" for="id_email">Email Address*</label><input type="email" name="email" placeholder="example@domain.com" autocomplete="email" class="form-control" title="" required id="id_email"></div>
+                        <div class="form-group"><label class="form-label" for="id_password1">Password*</label><input type="password" id="password1" name="password1" autocomplete="new-password" class="form-control" placeholder="**********" title="Your password can’t be too similar to your other personal information.Your password must contain at least 6 characters.Your password can’t be a commonly used password.Your password can’t be entirely numeric." required id="id_password1">
+                            <span class="eye" onclick="togglePasswordVisibility('password1', 'hide1', 'hide2')">
+                                <i id="hide1" class="fa fa-eye"></i>
+                                <i id="hide2" class="fa fa-eye-slash"></i>
+                            </span>
+                            {% comment %} <small class="form-text text-muted"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 6 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></small>                                                 {% endcomment %}
+                        </div>
+
+                        {% comment %} {% bootstrap_field form.password1 form_group_class='form-group' %} {% endcomment %}
+                        {% comment %} {% bootstrap_field form.password2 form_group_class='form-group' %} {% endcomment %}
+
+                        <div class="form-group">
+                            <label class="form-label" for="id_password2">Re-Type Password</label>
+                            <input type="password" name="password2" id="password2" autocomplete="new-password" class="form-control" placeholder="**********" title="Enter the same password as before, for verification." required id="id_password2">
+                            {% comment %} <small class="form-text text-muted">Enter the same password as before, for verification.</small>                         {% endcomment %}
+                            <span class="eye" onclick="togglePasswordVisibility('password2', 'hide3', 'hide4')">
+                                <i id="hide3" class="fa fa-eye"></i>
+                                <i id="hide4" class="fa fa-eye-slash"></i>
+                            </span>
+                        </div>
+
+                        {% comment %} <div class="form-group" style=" margin-bottom: 0px;">
+                            <label class="form-label-password">{{form.password1.label}}</label>
+                            {{form.password1}}
+                            <div class="help-text">{{ form.password1.help_text }}</div>
+                        </div> {% endcomment %}
+                        {% comment %} <div class="form-group" style=" margin-bottom: 0px;">
+                            <label class="form-label-retype-password">{{form.password2.label}}</label>
+                            {{form.password2}}
+                            <div class="help-text">{{ form.password2.help_text }}</div>
+                        </div> {% endcomment %}
+                        <div class="checkbox-color">
+                            <input type="checkbox" name="terms_of_services" class="custom-checkbox" required id="id_terms_of_services">
+                            <label class="mm-checkbox" for="terms_of_services"><a href="{% url 'home:terms_and_condition' %}" target="_blank">{{form.terms_of_services.label}}</a></label>
+                        </div>
+
+                        {% comment %} <button class="signup-button">Next</button> {% endcomment %}
+                        {% comment %} <input class="signup-button" type="submit" value="Next"> {% endcomment %}
+                        <button class="signup-button" type="submit">{% trans "Next" %}</button>
+                        <p class="line">Already Have An Account? <a href="{% url 'account_login' %}">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            {% comment %} <div class="right-section"><img src={% static 'img/group-12204.png' %}></div> {% endcomment %}
+            <div class="right-section"><img src={% static 'img/register-img.png' %}></div>
+        </div>
+    </div>
+    <div class="back">
+        <img src={% static 'img/background-eagle.svg' %}>
+    </div>
+
+{% endblock %}
+
+    {% block extra_body %}
+
+    <script>
+        function togglePasswordVisibility(inputId, showIconId, hideIconId) {
+            var x = document.getElementById(inputId);
+            var showIcon = document.getElementById(showIconId);
+            var hideIcon = document.getElementById(hideIconId);
+
+            if (x.type === 'password') {
+                x.type = 'text';
+                showIcon.style.display = 'none';
+                hideIcon.style.display = 'inline-block';
+            } else {
+                x.type = 'password';
+                showIcon.style.display = 'inline-block';
+                hideIcon.style.display = 'none';
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+
+
+    {% endblock %}

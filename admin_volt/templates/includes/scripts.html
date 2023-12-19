@@ -1,0 +1,91 @@
+{% load static %}
+
+<!-- Core -->
+<script src="{% static 'vendor/@popperjs/core/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<!-- Vendor JS -->
+<script src="{% static 'vendor/onscreen/dist/on-screen.umd.min.js' %}"></script>
+
+<!-- Slider -->
+<script src="{% static 'vendor/nouislider/dist/nouislider.min.js' %}"></script>
+
+<!-- Smooth scroll -->
+<script src="{% static 'vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %}"></script>
+
+<!-- Charts -->
+<script src="{% static 'vendor/chartist/dist/chartist.min.js' %}"></script>
+<script src="{% static 'vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+
+<!-- Datepicker -->
+<script src="{% static 'vendor/vanillajs-datepicker/dist/js/datepicker.min.js' %}"></script>
+
+<!-- Sweet Alerts 2 -->
+<script src="{% static 'vendor/sweetalert2/dist/sweetalert2.all.min.js' %}"></script>
+
+<!-- Moment JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+
+<!-- Vanilla JS Datepicker -->
+<script src="{% static 'vendor/vanillajs-datepicker/dist/js/datepicker.min.js' %}"></script>
+
+<!-- Notyf -->
+<script src="{% static 'vendor/notyf/notyf.min.js' %}"></script>
+
+<!-- Simplebar -->
+<script src="{% static 'vendor/simplebar/dist/simplebar.min.js' %}"></script>
+
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- Include Bower components (jQuery, underscore, etc.) -->
+<script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'underscore/underscore-min.js' %}"></script>
+
+<!-- Include NVD3.js and D3.js -->
+<script src="{% static 'nvd3/build/nv.d3.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'nvd3/build/nv.d3.min.css' %}">
+
+
+<!-- Volt JS -->
+<script src="{% static 'assets/js/volt.js' %}"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
+"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="chart.umd.js.map"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ctx = document.getElementById('userChart').getContext('2d');
+        const totalUsers = {{ total_users }};
+        
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Total Users'],
+                datasets: [{
+                    label: 'Total Users',
+                    data: [totalUsers],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>    
+
+<script>
+    const totalUsers = {{ total_users }};
+    console.log('Total Users:', totalUsers);
+    
+    // You can use the totalUsers variable in your JavaScript logic
+</script>

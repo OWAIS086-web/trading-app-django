@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.381" height="22.017" viewBox="0 0 20.381 22.017">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.254" y1="-0.613" x2="1.134" y2="0.816" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.127" stop-color="#fde966"/>
+      <stop offset="0.66" stop-color="#cf9102"/>
+      <stop offset="1" stop-color="#8c3c10"/>
+    </linearGradient>
+  </defs>
+  <path id="svgexport-1" d="M21.936,4.467a.9.9,0,0,1,.917.78l.006.075c.107,1.142,1.36,14.652-9.822,18.364a.848.848,0,0,1-.551,0C1.256,19.913,2.57,6.3,2.666,5.3l.005-.057a.9.9,0,0,1,.917-.78c5.918,0,8.532-2.477,8.532-2.477a.887.887,0,0,1,1.284,0s2.706,2.477,8.531,2.477ZM12.762,21.853c4.036-1.421,6.7-4.541,7.8-9.265a25.1,25.1,0,0,0,.6-6.06V6.3a15.339,15.339,0,0,1-8.348-2.477A15.36,15.36,0,0,1,4.46,6.3a20.892,20.892,0,0,0,.5,6.284c1.1,4.678,3.715,7.8,7.8,9.265ZM11.844,7.222h1.836v4.587h4.586v1.834H13.679v4.587H11.844V13.643H7.258V11.809h4.586Z" transform="translate(-2.572 -1.715)" fill-rule="evenodd" fill="url(#linear-gradient)"/>
+</svg>

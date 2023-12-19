@@ -1,0 +1,450 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+
+{% block extra_head %} 
+<style>
+    /* Apply custom styles to the select element */
+select.form-select {
+    /* Hide the dropdown arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+    
+    /* Add some padding for better appearance */
+    padding-right: 1rem;
+}
+
+/* Optional: Style the select container */
+.form-group {
+    position: relative; /* Ensure the arrow doesn't overlap text */
+}
+
+/* Optional: Add a custom arrow icon */
+.select-arrow {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+    .form-heading h2 {
+        text-align: center;
+        display: flex;
+        /* justify-content: center; */
+        font-size: 50px;
+        font-family: 'Poppins-Bold';
+    }
+
+    .form-outline {
+        /*border: 1px solid #edcc45;
+        border-radius: 25px;*/
+        width: 80%;
+        /*padding: 9px 40px;
+        box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);*/
+    } 
+
+    .form-control {
+        border-radius: 35px;
+        height: 50px;
+        border: 1px solid lightgray;
+        box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .two-dropdowns {
+        display: flex;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: -20px;
+        gap: 15px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-label {
+        font-size: 20px;
+        font-family: 'myFont-DemiBold';
+    }
+
+    .angles-down-img {
+        width: 12.48px;
+        height: 10px;
+        margin-top: 52px;
+        margin-left: 224px;
+        position: absolute;
+    }
+    
+  .angles-down-img {
+    width: 12.48px;
+    height: 10px;
+    margin-top: 52px;
+    margin-left: 224px;
+    position: absolute;
+  }
+
+  .angles-down-grade {
+    width: 12.48px;
+    height: 10px;
+    margin-top: 59px;
+    margin-left: 545px;
+    z-index: 2;
+    position: absolute;
+}
+  .angles-down-family {
+    width: 12.48px;
+    height: 10px;
+    margin-top: -45px;
+    margin-left: 495px;
+    position: absolute;
+  }
+
+  .angles-down-product {
+    width: 12.48px;
+    height: 10px;
+    margin-top: -45px;
+    margin-left: 495px;
+    position: absolute;
+  }
+  .angles-downe{
+        width: 12.48px;
+        height: 10px;
+        margin-top: -46px;
+        margin-left: 545px;
+        z-index: 2;
+        position: absolute;
+  }
+
+
+    .ounces-dropdown {
+        display: flex;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: -20px;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .metals-button {
+        width: 69%;
+        padding: 12px;
+        border-radius: 28px;
+        background: linear-gradient(283deg, #ba7607, #edcc45);
+        color: #fff;
+        height: 54px;
+        border: none;
+        font-size: 20px;
+        font-family: "myFont-Medium";
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .palladium-card {
+        margin: 0px 20px;
+        border-radius: 20px;
+        padding: 20px 20px;
+        background: linear-gradient(110deg, #b5b4b4, #ffffff00);
+    }
+
+    .gold-card {
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 20px 20px;
+        background: linear-gradient(115deg, #f7e58f, #ffffff00);
+    }
+
+    .silver-card {
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 20px 20px;
+        background: linear-gradient(115deg, #dcdcdc, #ffffff00);
+    }
+
+    .platinum-card {
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 20px 20px;
+        background: linear-gradient(111deg, #9b9b6e, #ffffff00);
+    }
+
+    .custom-card {
+        flex: 0 0 auto;
+        width: 100%;
+        margin: 20px 0px;
+        border: none;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+
+    .status-heading {
+        font-family: "myFont-Bold";
+        text-align: left;
+        font-size: 41px;
+        margin-top: 9px;
+        margin-bottom: 16px;
+        color: #171717;
+    }
+
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        padding: 00px 0px;
+        align-items: center;
+    }
+
+    .metal-heading {
+        font-size: 29px;
+        font-family: "myFont-Bold";
+        color: #171717;
+    }
+
+    .value {
+        font-size: 17px;
+        font-family: "myFont-DemiBold";
+        color: #171717;
+    }
+
+    .green-button {
+        font-family: "myFont-DemiBold";
+        color: rgb(23, 167, 42);
+        background-color: rgb(181, 239, 206);
+        font-size: 17px;
+        height: 42px;
+        width: 80px;
+        border-radius: 20px;
+        border: none;
+    }
+
+    .red-button {
+        font-family: "myFont-DemiBold";
+        color: #f80707;
+        background-color: rgb(255, 191, 191);
+        font-size: 17px;
+        height: 42px;
+        width: 80px;
+        border-radius: 20px;
+        border: none;
+    }
+
+    .value-position {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .value-position img {
+        height: 20px;
+    }
+
+    .inner-lower {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 0px;
+    }
+
+    .value-percentage-green {
+        font-size: 17px;
+        font-family: "myFont-Medium";
+        color: #17a72a;
+
+    }
+
+    .value-percentage-red {
+        font-size: 17px;
+        font-family: "myFont-Medium";
+        color: #f80707;
+
+    }
+
+    .date-heading {
+        font-size: 12px;
+        font-family: 'myFont-Medium';
+    }
+
+    .time-period {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .metals {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-section {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
+        margin-top: 75px;
+    }
+
+    .metal-right img {
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+    .bottom-gape{
+        width: 100%;
+    }
+    .back img {
+        height: auto;
+        padding-top: 80px;
+        width: 564px;
+        z-index: -1;
+        margin-left: -1562px;
+      }
+      .add-metal-form{
+        width: 100%;
+        height: auto;
+        background-image: url("{% static 'img/mask-group-8.svg' %}");
+        background-repeat: no-repeat;
+    }
+    body{
+        background-color: #FEFAEA;
+        
+    }
+    
+      
+</style>
+
+{% endblock %}
+
+{% block body-content %}
+<section class="add-metal-form">
+    <div class="container">
+        <div class="form-section">
+            <div class="form-outline col-lg-5">
+                <div class="form-heading">
+                    <h2>Add Metal</h2>
+                </div>
+                <form method="POST" action="{% url 'portfolio:portfolio'%}">               
+                    {% csrf_token %}
+                    <div class="two-dropdowns">
+                        {% bootstrap_field form.metal form_group_class='form-group' %}
+                        <img class="angles-down-grade" src="{% static './img/angles-down.png' %}" >
+                        {% bootstrap_field form.grade form_group_class='form-group' %}
+                        <img class="angles-down-grade" src="{% static './img/angles-down.png' %}" >
+                    </div>
+                    {% bootstrap_field form.product_family form_group_class='form-group' %}
+                    <img class="angles-downe" src="{% static './img/angles-down.png' %}" >
+                    {% bootstrap_field form.product form_group_class='form-group' %}
+                    <img class="angles-down-grade" src="{% static './img/angles-down.png' %}" >
+                    <div class="ounces-dropdown">
+                        {% bootstrap_field form.ounces form_group_class='form-group' %}
+                        {% bootstrap_field form.metal_quantity form_group_class='form-group' %}
+                    </div>
+                    <div class="ounces-dropdown">
+                        {% bootstrap_field form.acquisition_cost form_group_class='form-group' %}        
+                        {% bootstrap_field form.purchase_date form_group_class='form-group' %}
+                        <input type="hidden" name="factor_rate" value="0" id="id_factor_rate">
+                        <input type="hidden" name="ask" value="0" id="id_ask">
+                    </div>
+                    <div class="form-button">
+                        <button type="submit" class="metals-button">Save &amp; Continue</button>
+                    </div>
+                </form>
+
+                <div id ="divmetalInfo" class="metal-info">
+                    <div id ="divPalladium" class="card palladium-card custom-card" style="display: none;">
+                        {% comment %} <h1 class="status-heading">Current</h1> {% endcomment %}
+                        <div class="inner">
+                            <div class="metals">
+                                <img src="{% static 'img/group-12194.svg' %} ">
+                                <h1 class="metal-heading">Palladium</h1>
+                            </div>
+                            <h1 class="value gape">$2,905</h1>
+                            <div class="value-position">
+                                <img src="{% static 'img/arrow-up.svg' %}" alt="Image error">
+                                <button class="green-button">$3,050</button>
+                            </div>
+                        </div>
+                        <div class="inner-lower">
+                            <p class="date-heading">MM/DD/YYYY</p>
+                            <p class="value-percentage-green gape">+340 (+5,04%)</p>
+                            <p class="time-period">145</p>
+                        </div>
+                    </div>
+                    <div id ="divGold" class="card gold-card custom-card" style="display: none;">
+                        <h1 class="status-heading">Current</h1>
+                        <div class="inner">
+                            <div class="metals">
+                                <img src="{% static 'img/group-12195.svg' %}">
+                                <h1 class="metal-heading">Gold</h1>
+                            </div>
+                            <h1 class="value gape">$2,905</h1>
+                            <div class="value-position">
+                                <img src="{% static 'img/arrow-down-icon.svg' %}" alt="Image error">
+                                <button class="red-button">$3,050</button>
+                            </div>
+                        </div>
+                        <div class="inner-lower">
+                            <p class="date-heading">MM/DD/YYYY</p>
+                            <p class="value-percentage-red gape">+340 (+5,04%)</p>
+                            <p class="time-period">145</p>
+                        </div>
+                    </div>
+                    <div id ="divSilver" class="card silver-card custom-card" style="display: none;">
+                        <h1 class="status-heading">Current</h1>
+                        <div class="inner">
+                            <div class="metals">
+                                <img src="{% static 'img/group-12196.svg' %}">
+                                <h1 class="metal-heading">Silver</h1>
+                            </div>
+                            <h1 class="value gape">$2,905</h1>
+                            <div class="value-position">
+                                <img src="{% static 'img/arrow-down-icon.svg' %}" alt="Image error">
+                                <button class="red-button">$3,050</button>
+                            </div>
+                        </div>
+                        <div class="inner-lower">
+                            <p class="date-heading">MM/DD/YYYY</p>
+                            <p class="value-percentage-red gape">+340 (+5,04%)</p>
+                            <p class="time-period">145</p>
+                        </div>
+                    </div>
+                    <div id ="divPlatinum" class="card platinum-card custom-card" style="display: none;">
+                        <h1 class="status-heading">Current</h1>
+                        <div class="inner">
+                            <div class="metals">
+                                <img src="{% static 'img/group-12197.svg' %}">
+                                <h1 class="metal-heading">Platinum</h1>
+                            </div>
+                            <h1 class="value gape">$2,905</h1>
+                            <div class="value-position">
+                                <img src="{% static 'img/arrow-up.svg' %}" alt="Image error">
+                                <button class="green-button">$3,050</button>
+                            </div>
+                        </div>
+                        <div class="inner-lower">
+                            <p class="date-heading">MM/DD/YYYY</p>
+                            <p class="value-percentage-green gape">+340 (+5,04%)</p>
+                            <p class="time-period">145</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="metal-right col-lg-7">
+                <img src="{% static 'img/signup-img.png' %}">
+            </div>
+        </div>
+        <div class="bottom-gape">
+        <br>
+        <br>
+        <br>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

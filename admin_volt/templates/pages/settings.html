@@ -1,0 +1,142 @@
+{% extends 'layouts/base.html' %}
+{% load bootstrap5 %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/settings.css' %}>
+{% endblock %}
+
+{% block banner-content %} {% endblock %}
+
+{% block body-content %}
+
+<br>
+<br>
+<br>
+<div class="container main-section">
+    <h1>Settings</h1>
+</div>
+<div class="container">
+    <div class="notification2">
+
+        <h1>if need Notifications</h1>
+        <div class="custom-control custom-switch">
+        
+           
+        </div>
+    </div>
+    <a class="a-link" href="javascript:void(0);" onclick="openPopup()">
+        <div class="notification">
+            <h1>Change Password</h1>
+        </div>
+    </a>
+    <div class="popup" id="popup">
+        <span class="close-icon" onclick="closePopup()">
+            <img src="{% static 'img/icon-cancel.svg' %}" alt="">
+        </span>
+    
+        <h2>Change Password</h2>
+        <form method="POST" action="{% url 'admin_password_change' %}" onsubmit="handleFormSubmission(event)">
+            {% csrf_token %}
+            <div class="password-field">
+                <label class="small mb-1" for="id_old_password">Old Password</label>
+                <input type="password" name="old_password" autocomplete="current-password"
+                       class="form-control" required id="id_old_password"
+                       placeholder="Enter Old Password"/>
+                <span class="eye" onclick="togglePasswordVisibility('id_old_password', 'hide1', 'hide2')">
+                    <i id="hide1" class="fa fa-eye"></i>
+                    <i id="hide2" class="fa fa-eye-slash"></i>
+                </span>
+            </div>
+            <div class="password-field">
+                <label class="small mb-1" for="id_new_password1">New Password</label>
+                <input type="password" name="new_password1" autocomplete="new-password"
+                       class="form-control" required id="id_new_password1"
+                       placeholder="Enter New Password"/>
+    
+                <span class="eye" onclick="togglePasswordVisibility('id_new_password1', 'hide3', 'hide4')">
+                    <i id="hide3" class="fa fa-eye"></i>
+                    <i id="hide4" class="fa fa-eye-slash"></i>
+                </span>
+            </div>
+            <div class="password-field">
+                <label class="small mb-1" for="id_new_password2">New Password Confirmation</label>
+                <input type="password" name="new_password2" autocomplete="new-password"
+                       required id="id_new_password2" class="form-control" required id="id_new_password1"
+                       placeholder="Confirm New Password"/>
+    
+                <span class="eye" onclick="togglePasswordVisibility('id_new_password2', 'hide5', 'hide6')">
+                    <i id="hide5" class="fa fa-eye"></i>
+                    <i id="hide6" class="fa fa-eye-slash"></i>
+                </span>
+            </div>
+    
+            <div class="buttons">
+                <button class="save-now" onclick="closePopup()">Save Now</button>
+                <button class="cancel" onclick="closePopup()">Cancel</button>
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div id="form_errors">
+                            {% for key, value in form.errors.items %}
+                                <strong>{{ value }}</strong>
+                            {% endfor %}
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+    <a class="a-link" href="{% url 'home:privacy_policy' %}">
+        <div class="notification">
+            <h1>Privacy Policy</h1>
+        </div>
+    </a>
+    <a class="a-link" href="{% url 'home:terms_and_condition'%}">
+        <div class="notification">
+            <h1>Terms & Condition</h1>
+        </div>
+    </a>
+    <a class="a-link" href="{% url 'home:contact_us' %}">
+        <div class="notification">
+            <h1>Help & Support</h1>
+        </div>
+    </a>
+
+
+</div>
+ {% endblock %}
+{% block body-content-footer %}
+
+<script>
+    function openPopup() {
+        document.getElementById("popup").style.display = "block";
+        document.body.classList.add("popup-open");
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.body.classList.remove("popup-open");
+    }
+    function togglePasswordVisibility(inputId, showIconId, hideIconId) {
+        var x = document.getElementById(inputId);
+        var showIcon = document.getElementById(showIconId);
+        var hideIcon = document.getElementById(hideIconId);
+
+        if (x.type === 'password') {
+            x.type = 'text';
+            showIcon.style.display = 'none';
+            hideIcon.style.display = 'inline-block';
+        } else {
+            x.type = 'password';
+            showIcon.style.display = 'inline-block';
+            hideIcon.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}
+{% endblock %}
+

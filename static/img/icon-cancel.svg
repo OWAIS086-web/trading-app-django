@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.265" height="38.266" viewBox="0 0 38.265 38.266">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="1" x2="-0.294" y2="-0.297" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ba7607"/>
+      <stop offset="1" stop-color="#edcc45"/>
+    </linearGradient>
+    <filter id="Icon_metro-cancel">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#edcc45" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g data-type="innerShadowGroup">
+    <path id="Icon_metro-cancel-2" data-name="Icon metro-cancel" d="M21.7,1.928A19.133,19.133,0,1,0,40.836,21.061,19.133,19.133,0,0,0,21.7,1.928Zm0,34.678A15.545,15.545,0,1,1,37.249,21.061,15.545,15.545,0,0,1,21.7,36.606Zm5.979-25.112L21.7,17.473l-5.979-5.979-3.587,3.587,5.979,5.979L12.137,27.04l3.587,3.587L21.7,24.648l5.979,5.979L31.27,27.04l-5.979-5.979,5.979-5.979Z" transform="translate(-2.571 -1.928)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_metro-cancel)">
+      <path id="Icon_metro-cancel-3" data-name="Icon metro-cancel" d="M21.7,1.928A19.133,19.133,0,1,0,40.836,21.061,19.133,19.133,0,0,0,21.7,1.928Zm0,34.678A15.545,15.545,0,1,1,37.249,21.061,15.545,15.545,0,0,1,21.7,36.606Zm5.979-25.112L21.7,17.473l-5.979-5.979-3.587,3.587,5.979,5.979L12.137,27.04l3.587,3.587L21.7,24.648l5.979,5.979L31.27,27.04l-5.979-5.979,5.979-5.979Z" transform="translate(-2.57 -1.93)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

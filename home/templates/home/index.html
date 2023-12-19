@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "Home | Priority Gold Plus" %}{% endblock %}
+{% block extra_head %} {% endblock %}
+
+{% block banner-content %} {% endblock %}
+
+{% block body-content %}
+    <div class="position-relative">
+        <div class="">
+            <div class="container-fluid container-div">
+                <div class="security-section">
+                    <h1 class="main-heading">Priority Gold
+                    </h1>
+                    <h1 class="P-Heading2">for
+                        traders
+                        & investors</h1>
+                    <p class="security-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod
+                        tempor ut labore et dolore magna aliqua.</p>
+                    <button class="security-button">Download Now</button>
+                </div>
+                <div class="image-section">
+                    <img src={% static 'img/priority-gold.xd.png' %} class="image-right" alt="Image" class="security-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid card-row">
+        <div class="card-palladium card-bg1">
+            <img src={% static 'img/group-12194.svg' %} alt="Palladium Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Palladium</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-palladium">+350 (+5.04%)</p>
+        </div>
+        <div class="card-gold card-bg2">
+            <img src={% static 'img/group-12195.svg' %} alt="Gold Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Gold</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-gold">+350 (+5.04%)</p>
+        </div>
+        <div class="card-silver card-bg3">
+            <img src={% static 'img/group-12196.svg' %} alt="Silver Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Silver</h2>
+            </div>
+            <div class="card-details">
+                <button class="red">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-silver">+350 (+5.04%)</p>
+        </div>
+        <div class="card-platinum card-bg4">
+            <img src={% static 'img/group-12197.svg' %} alt="Platinum Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Platinum</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+
+            </div>
+            <p class="card-text-platinum">+350 (+5.04%)</p>
+        </div>
+    </div>
+
+
+
+    <div class="background-white">
+        <div class="container-cr">
+            <div class="left-section-cr">
+                <div class="content-cr">
+                    <h2 class="heading-cr">Features</h2>
+                    <h3 class="sub-heading-cr">world-class platform</h3>
+                    <p class="paragraph-cr">We're constantly improving our trading platform, trying to make it the best
+                        on the market.</p>
+                    <div class="icons-container-cr">
+                        <div class="icon-cr">
+                            <div class="icon-round">
+                                <img src={% static 'img/svgexport-16.svg' %} alt="Image error">
+                            </div>
+                            <div class="icon-line-cr"></div>
+                            <p class="icon-description-cr">Lorem ipsum dolor amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor</p>
+                        </div>
+                        <div class="icon-cr">
+                            <div class="icon-border">
+                                <img src={% static 'img/svgexport-17.svg' %} alt="Image error">
+                            </div>
+                            <div class="icon-line-cr"></div>
+                            <p class="icon-description-cr">Lorem ipsum dolor amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor</p>
+                        </div>
+                        <div class="icon-cr">
+                            <div class="icon-border">
+                                <img src={% static 'img/svgexport-12.svg' %} alt="Image error">
+                            </div>
+                            <p class="icon-description-cr">Lorem ipsum dolor amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section-cr col-md-4">
+                <div class="circle-container-cr">
+                    <img src={% static 'img/m001t0212_b_lock_29jun22@2x.png' %} alt="Image error" class="circle-image-cr">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 mol-md-12 bg-white">
+        <div class="container-fluid container-invest">
+            <div class="investing-section col-md-5">
+                <h1 class="security-heading">Investing</h1>
+                <h1 class="security-heading">Build your portfolio starting with Us</h1>
+                <p class="security-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button class="security-button">Learn More</button>
+            </div>
+            <div class="image-section col-md-7">
+                <img src={% static 'img/double-phone.png' %} alt="Image error" class="security-image">
+                <div class="security-oval"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white">
+        <div class="container-fluid container-section">
+            <div class="content-section">
+                <div class="left-section col-lg-6">
+                    <img src={% static 'img/signup-img.png' %} alt="Image error" class="image-round-border">
+                </div>
+
+                <div class="right-section col-md-6">
+                    <h2 class="sub-heading">About</h2>
+                    <h2 class="sub-heading">Priority Gold</h2>
+                    <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <button class="security-button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="background-color: #fefaea;"></div>
+<br>
+<div class="bg-white banneer">
+        <div class="container-fluid container-new">
+            <div class="heading-section-card">
+                <h1 class="main-heading-card">Read Hot Trading &</h1>
+                <h1 class="sub-heading-card">Priority Gold News</h1>
+            </div>
+
+            <div class="card-section-card">
+                <div class="card card-card">
+                    <img src={% static 'img/rectangle-1506.png' %} alt="Image error" class="card-image-card">
+                    <h2 class="card-heading-card">Terra classic price prediction: What is terra?</h2>
+                    <p class="card-paragraph-card">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="security-button">Read More</button>
+                </div>
+
+                <div class="card card-card">
+                    <img src={% static 'img/rectangle-1503.png' %} alt="Image error" class="card-image-card">
+                    <h2 class="card-heading-card">Can Adidas continue selling Yeezy product</h2>
+                    <p class="card-paragraph-card">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="golden-card-button">Read More</button>
+                </div>
+
+                <div class="card card-card">
+                    <img src={% static 'img/rectangle-1504.png' %} alt="Image error" class="card-image-card">
+                    <h2 class="card-heading-card">Terra classic price prediction: What is terra?</h2>
+                    <p class="card-paragraph-card">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <button class="golden-card-button">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 mol-md-12 bg-white">
+        <div class="container container-invest" style="margin-bottom: -180px;">
+            <div class="download-section">
+                <h1 class="download-heading">Download</h1>
+                <h1 class="download-heading">Our App Now!!!</h1>
+                <p class="download-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco.</p>
+                <div class="container container-buttons">
+                    <div class="col-md-4 footer-ns animated fadeInRight">
+                        <ul class="home-ul-btn">
+                            <li class="li-btn">
+                                <div class="download apple">
+                                    <i class='fa'><img src={% static 'img/apple_icon.svg' %} alt="Image error"></i>
+                                    <span class="p1" style="font-weight: bold;">Available on the</span>
+                                    <span class="p2">App Store</span>
+                                </div>
+                            </li>
+                            <li class="li-btn">
+                                <div class="download android">
+                                    <i class='fab'><img src={% static 'img/play-store.svg' %} alt="Image error"></i>
+                                    <span class="p1">GET IT ON</span>
+                                    <span class="p2">Google Play</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="image-section">
+                <img src={% static 'img/download-app.png' %} alt="Image error" class="download-image-2">
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white">
+        <div class="container-section">
+
+
+
+                <div class="container-container">
+                    <div class="image-container">
+                        <img src={% static 'img/group-12207.png' %} alt="Image error">
+                        <div class="content-container">
+                            <h1 class="main-heading-container">Get Started</h1>
+                            <h1 class="sub-heading-container">with Priority Gold</h1>
+                            <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit.Lorem
+                                ipsum
+                                dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                                adipiscing
+                                elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                            <button class="my-button-container">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="featured-section" style="background-color: white;">
+        <p>Featured and seen in</p>
+        <div class="image-row">
+            <img src={% static 'img/circle.png' %} alt="Image error">
+            <img src={% static 'img/earth-2.0.png' %} alt="Image error">
+            <img src={% static 'img/solaytic.png' %} alt="Image error">
+            <img src={% static 'img/kyan.png' %} alt="Image error">
+            <img src={% static 'img/treva.png' %} alt="Image error">
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,512 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/portfolio.css' %}>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+{% endblock %}
+
+{% block banner-content %} {% endblock %}
+
+{% block body-content %}
+<br><br><br>
+
+    {% comment %} <div class="container-fluid metals-row">
+        <div class="card-palladium card-bg1">
+            <img src={% static 'img/group-12194.svg' %} alt="Palladium Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Palladium</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-palladium">+350 (+5.04%)</p>
+        </div>
+        <div class="card-gold card-bg2">
+            <img src={% static 'img/group-12195.svg' %} alt="Gold Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Gold</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-gold">+350 (+5.04%)</p>
+        </div>
+        <div class="card-silver card-bg3">
+            <img src={% static 'img/group-12196.svg' %} alt="Silver Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Silver</h2>
+            </div>
+            <div class="card-details">
+                <button class="red">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-silver">+350 (+5.04%)</p>
+        </div>
+        <div class="card-platinum card-bg4">
+            <img src={% static 'img/group-12197.svg' %} alt="Platinum Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Platinum</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+
+            </div>
+            <p class="card-text-platinum">+350 (+5.04%)</p>
+        </div>
+    </div> {% endcomment %}
+
+
+
+
+
+    <section class="Metals">
+        <div class="container">
+            <div class="metals-cards-row">
+            {% for entry in summarized_metal_data %}
+                {% if entry.metal_name == "Palladium" %}
+                    <div class="card-palladium card-bg1">
+                        <img src={% static 'img/group-12194.svg' %} alt="Palladium Image error">
+                        <div class="card-content"><h2 class="shade-card-heading">{{ entry.metal_name }}</h2></div>
+                        {% if entry.difference_value < 0 %}
+                        <div class="card-details">
+                            <button class="green"><i class="fas fa-arrow-up"></i>${{ entry.current_value|intcomma }}</button>
+                        </div>
+                        <p class="card-text-palladium">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% else %}
+                            <div class="card-details">
+                                <button class="red"><i class="fas fa-arrow-down"></i>${{ entry.current_value|intcomma }}</button>
+                            </div>
+                            <p class="card-text-palladium">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% endif %}
+                    </div>
+                {% elif entry.metal_name == "Gold" %}
+                    <div class="card-gold card-bg2">
+                        <img src={% static 'img/group-12195.svg' %} alt="Gold Image error">
+                        <div class="card-content">
+                            <h2 class="shade-card-heading">{{ entry.metal_name }}</h2>
+                        </div>
+                        {% if entry.difference_value < 0 %}
+                        <div class="card-details">
+                            <button class="red"><i class="fas fa-arrow-down"></i>${{ entry.current_value|intcomma }}</button>
+                        </div>
+                        <p class="card-text-gold">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% else %}
+                            <div class="card-details">
+                                <button class="green"><i class="fas fa-arrow-up"></i>${{ entry.current_value|intcomma }}</button>
+                            </div>
+                            <p class="card-text-gold">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% endif %}
+                    </div>
+                {% elif entry.metal_name == "Silver" %}
+                    <div class="card-silver card-bg3">
+                        <img src={% static 'img/group-12196.svg' %} alt="Silver Image error">
+                        <div class="card-content">
+                            <h2 class="shade-card-heading">{{ entry.metal_name }}</h2>
+                        </div>
+                        {% if entry.difference_value < 0 %}
+                        <div class="card-details">
+                            <button class="red"><i class="fas fa-arrow-down"></i>${{ entry.current_value|intcomma }}</button>
+                        </div>
+                        <p class="card-text-silver">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% else %}
+                            <div class="card-details">
+                                <button class="green"><i class="fas fa-arrow-up"></i>${{ entry.current_value|intcomma }}</button>
+                            </div>
+                            <p class="card-text-silver">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="card-platinum card-bg4">
+                        <img src={% static 'img/group-12197.svg' %} alt="Platinum Image error">
+                        <div class="card-content"><h2 class="shade-card-heading">{{ entry.metal_name }}</h2></div>
+                        {% if entry.difference_value < 0 %}
+                        <div class="card-details">
+                            <button class="red"><i class="fas fa-arrow-down"></i>${{ entry.current_value|intcomma }}</button>
+                        </div>
+                        <p class="card-text-platinum">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% else %}
+                            <div class="card-details">
+                                <button class="green"><i class="fas fa-arrow-up"></i>${{ entry.current_value|intcomma }}</button>
+                            </div>
+                            <p class="card-text-platinum">{{ entry.difference_value|intcomma }} ({{ entry.percentage_change }}%)</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="Graphs">
+        <div class="container top-gape">
+                <div class="card-container">
+                    <div class="card-row">
+                        <div class="col">
+                            <div class="card custom-second-card">
+                                 <div class="card-header custom-header">
+                                    <div class="card-round-shape"></div>
+                                    <h2 class="card-title">Gold</h2>
+                                    <div class="metals-dropdown">
+                                        <div class="dropdown-metals">
+                                            <img id="dropdown-toggle" src="{% static 'img/arrow-down-gold.svg' %}" alt="Dropdown Arrow">
+                                            <select id="metalDropdown" class="dropdown-content custom-dropdown">
+                                                <option value="silver">Silver</option>
+                                                <option value="palladium">Palladium</option>
+                                                <option value="platinum">Platinum</option>
+                                                <option value="gold">Gold</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                {% comment %} <div class="dropdown">
+                                    <select id="metalDropdown" class="dropdown-content custom-dropdown">
+                                      <option value="silver">Silver</option>
+                                      <option value="palladium">Palladium</option>
+                                      <option value="platinum">Platinum</option>
+                                      <option value="gold">Gold</option>
+                                    </select>
+                                  </div> {% endcomment %}
+                                <div class="second-chart-heading">
+                                    <p class="dollar-sign">$</p>
+                                    <h1>34.789,75</h1>
+                                    <p class="percentage">-10,68%</p>
+                                <div class="space-between-buttons"></div>
+
+                                    <div class="card-body custom-body-buttons">
+                                        <button class="custom-small-button">Day</button>
+                                        <button class="custom-small-button">Week</button>
+                                        <button class="custom-small-button active">Month</button>
+                                        <button class="custom-small-button">Year</button>
+                                    </div>
+                                </div>
+
+                                <div id="area-chart2" class="custom-chart2"><img src={% static 'img/graph-2.svg' %}></div>
+                                <hr class="horizontal-line2">
+                                <div class="custom-row">
+                                    <div class="flex">
+                                        <h4 class="custom-heading">Market Cap</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                    <div class="flex">
+                                        <h4 class="custom-heading">Volume (24 hours)</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                    <div class="flex">
+                                        <h4 class="custom-heading">Circulating Supply</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                </div>
+
+                                <div class="custom-row-bottom">
+                                    <div>
+                                        <h3 class="bottom-heading">$34.789,75</h3>
+                                    </div>
+                                    <div>
+                                        <h3 class="bottom-heading padding-right">$60488,89</h3>
+                                    </div>
+                                    <div>
+                                        <h3 class="bottom-heading">59 days</h3>
+                                    </div>
+                                </div>
+                                <div class="custom-row" style="padding-top: 20px;">
+                                    <div class="flex">
+                                        <h4 class="custom-heading">Popularity on Cuboid</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                    <div class="flex">
+                                        <h4 class="custom-heading" style="margin-left: -68px;">Trading activity</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                    <div class="flex">
+                                        <h4 class="custom-heading-left">Typical hold time</h4>
+                                        <i class="fa fa-exclamation-circle custom-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="custom-row-bottom2">
+                                    <div>
+                                        <h3 class="bottom-heading">$34.789,75</h3>
+                                    </div>
+                                    <div class="flex" style="padding-left: 40px;">
+                                        <p class="buy">64% buy</p>
+                                        <div class="load-bar">
+                                            <div class="load-bar-inner" style="width: 60%;"></div>
+                                        </div>
+                                        <p class="sell">36% sell</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="bottom-heading">18.7M BTC</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col">
+                            <div class="card custom-card top">
+                                <div class="card-polar-chart">
+                                    <div class="chart-container-polar-chart">
+                                        <div class="chart-container">
+                                            <canvas id="polarChart"></canvas>
+                                            <div class="center-button-bg">
+                                                <button></button>{% comment %} 
+                                                <div id="Platinum-graph-value"><h4></h4></div>
+                                                <div id="Palladium-graph-value"><h4></h4></div>
+                                                <div id="Gold-graph-value"><h4></h4></div>
+                                                <div id="Silver-graph-value"><h4></h4></div> {% endcomment %}
+                                            </div>
+                                            <div class="center-button-border">
+                                                <button></button>
+                                                </div>
+                                            <div class="center-button">
+                                                <button><h6 class="percent">{{ portfolio_total.percentage_change }}%</h6><br><h6 class="percent-text">{{ portfolio_total.profit_loss_flag }}</h6></button>
+                                            </div>
+                                            <div class="button-circle">
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    {% comment %} {% for entry in portfolio_total %} {% endcomment %}
+                                    <div class="content-container-polar-chart">
+                                        <h2 class="main-heading-polar-chart">Acquisition Cost</h2>
+                                        <h3 class="subheading-golden-polar-chart">${{ portfolio_total.acquisition_value|intcomma }}</h3> 
+                                        <h3 class="subheading-golden-polar-chart">{{ portfolio_total.difference_value|intcomma }} ({{ portfolio_total.percentage_change }}%)</h3>
+                                        <h3 class="subheading-black-polar-chart">Current Value</h3>
+                                        <div class="icon-container-polar-chart">
+                                        {% if portfolio_total.difference_value > 0 %}
+                                            <img src={% static 'img/arrow-up.svg' %} style="margin-right: 6px;
+                                            margin-bottom: 4px;
+                                            height: 14px;" alt="Image error">
+                                            <span class="amount-polar-chart">${{ portfolio_total.current_value|intcomma }}</span>
+                                        {% endif %}
+                                        {% if portfolio_total.difference_value < 0 %}
+                                            <img src={% static 'img/arrow-down-icon.svg' %} style="margin-right: 6px;
+                                            margin-bottom: 4px;
+                                            height: 14px;" alt="Image error">
+                                            <span class="amount-polar-chart-red">${{ portfolio_total.current_value|intcomma }}</span>
+                                        {% endif %}                                        
+                                        </div>
+                                    </div>
+                                    {% comment %} {% endfor %} {% endcomment %}
+
+
+                                </div>
+                                <div class="metal-container">
+                                    <div class="metal-heading">
+                                        <span class="metal-oval-platinum"></span>
+                                        <h4 class="metal-title">Platinum</h4>
+                                    </div>
+                                    <div class="metal-heading">
+                                        <span class="metal-oval"></span>
+                                        <h4 class="metal-title">Gold</h4>
+                                    </div>
+                                    <div class="metal-heading">
+                                        <span class="metal-oval-palladium"></span>
+                                        <h4 class="metal-title">Palladium</h4>
+                                    </div>
+                                    <div class="metal-heading">
+                                        <span class="metal-oval-silver"></span>
+                                        <h4 class="metal-title">Silver</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </section>
+
+<br><br><br>
+
+{% endblock %}
+
+{% block body-content-footer %} 
+<script>
+    Chart.defaults.plugins.tooltip.enabled = false;
+
+    //const PortfolioTotalData = JSON.parse('{{ portfolio_total_data|safe }}'); // Parse JSON from Django context
+
+    //const rawPortfolioTotalData = '{{ portfolio_total_data|safe }}';
+    //console.log(rawPortfolioTotalData)
+    //const formattedPortfolioTotalData = rawPortfolioTotalData.replace(/'/g, '"');
+    //console.log(formattedPortfolioTotalData)
+    //const PortfolioTotalData = JSON.parse(formattedPortfolioTotalData);
+    const PortfolioTotalData = JSON.parse('{{ portfolio_total_data|safe }}'); // Parse JSON from Django context
+    //console.log(PortfolioTotalData)
+
+//    const rawsummarizedMetalData = '{{ summarized_metal_graph_data|safe }}';
+  //  console.log(rawsummarizedMetalData)
+   // const formattedsummarizedMetalData = rawsummarizedMetalData.replace(/'/g, '"');
+    //console.log(formattedsummarizedMetalData)
+    //const summarizedMetalData = JSON.parse(formattedsummarizedMetalData);
+
+    const summarizedMetalData = JSON.parse('{{ summarized_metal_graph_data|safe }}'); // Parse JSON from Django context
+    //const summarizedMetalData = JSON.parse('[{"labels": "Gold", "values": "34.0740", "colors": "#D9A518"}, {"labels": "Platinum", "values": "100.0000", "colors": "#9B9B6E"}, {"labels": "Silver", "values": "7.0000", "colors": "#B9B9B9"}]');
+    //console.log(summarizedMetalData)
+
+    const data = {
+        labels: summarizedMetalData.map(entry => entry.labels),
+        datasets: [{
+            data: summarizedMetalData.map(entry => (parseFloat(entry.values))),
+            dataShow: summarizedMetalData.map(entry => (parseFloat(entry.values))), // Convert to float
+            backgroundColor: summarizedMetalData.map(entry => entry.colors)
+        }]
+    };
+
+    {% comment %} console.log(data); {% endcomment %}
+
+    let ValueShow = []
+
+    for (let i = 0; i < data.datasets[0].data.length; i++) {
+        const value = data.datasets[0].data[i];
+        
+        if (value < 1) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(50);
+        } else if (value < 3) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(50.5);
+        } else if (value < 5) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(51);
+        } else if (value < 10) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(51.5);
+        } else if (value < 15) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(52);
+        } else if (value < 30) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(53);
+        } else if (value < 50) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(54);
+        } else if (value < 70) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(55);
+        } else if (value < 90) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(56);
+        } else if (value < 110) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(57);
+        } else if (value < 130) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(58);
+        } else if (value < 150) {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(59);
+        } else {
+            ValueShow.push(value);
+            data.datasets[0].data[i] = parseFloat(60);
+        }
+    }
+{% comment %} console.data(ValueShow); {% endcomment %}
+{% comment %} console.log(data); {% endcomment %}
+    const config = {
+        type: 'polarArea',
+        data: data,
+        options: {
+            responsive: true,
+            rotation: -45, // Adjust the rotation angle
+            elements: {
+                arc: {
+                    borderWidth: 0
+                },
+                point: {
+                    radius: 0
+                }
+            },
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        display: false
+                    }
+                },
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false
+                },
+                datalabels: {
+                    color: 'white',
+                    formatter: (value, context) => {
+                        return ValueShow[context.dataIndex];
+                    },
+                    font: {
+                        size: '18'
+                    },
+                    anchor: 'end',
+                    align: 'start',
+                    offset: 10
+                
+                }
+            }
+        },
+        plugins: [ChartDataLabels]  
+};
+
+console.log(ValueShow);
+window.onload = function() {
+    //alert(" JS Activated")
+    var ctx = document.getElementById('polarChart').getContext('2d');
+    var chart = new Chart(ctx, config);
+
+    // Get the h3 elements inside the divs
+    var textAbove = document.getElementById('Platinum-graph-value').querySelector('h4');
+    var textBelow = document.getElementById('Palladium-graph-value').querySelector('h4');
+    var textLeft = document.getElementById('Gold-graph-value').querySelector('h4');
+    var textRight = document.getElementById('Silver-graph-value').querySelector('h4');
+    var percentElement = document.querySelector('.percent');
+var percentTextElement = document.querySelector('.percent-text');
+
+    // Update the text content
+    //var values = [50, 60, 70, 80];
+    //var values = summarizedMetalData.map(entry => parseFloat(entry.values))
+   // textRight.textContent = values[0];
+    //textBelow.textContent = values[1];
+    //textLeft.textContent = values[2];
+    //textAbove.textContent = values[3];
+
+    //
+    
+    percentElement.textContent = PortfolioTotalData.percentage_change + '%';
+    percentTextElement.textContent = PortfolioTotalData.profit_loss_flag;
+    console.log(percentElement);
+};
+    const buttons = document.querySelectorAll('.custom-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove the active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add the active class to the clicked button
+            button.classList.add('active');
+        });
+    });
+</script>
+{% endblock %}

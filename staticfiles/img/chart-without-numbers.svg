@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="233.35" height="208.865" viewBox="0 0 233.35 208.865">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.19" y1="0.131" x2="0.833" y2="0.896" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e3e3e3"/>
+      <stop offset="1" stop-color="#8f8f8f"/>
+    </linearGradient>
+    <filter id="Ellipse_17" x="87.574" y="70.598" width="93.431" height="93.431" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.165" y1="0.125" x2="0.843" y2="0.884" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#adadad"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="-0.092" y1="-0.185" x2="0.863" y2="0.92" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#858585"/>
+    </linearGradient>
+    <filter id="Ellipse_21" x="99.723" y="82.747" width="65.134" height="65.134" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur-2"/>
+      <feFlood flood-opacity="0.349"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_12555" data-name="Group 12555" transform="translate(11752 -418.269)">
+    <g id="Group_11996" data-name="Group 11996" transform="translate(-11752 418.275)">
+      <g id="Group_11983" data-name="Group 11983" transform="translate(50.76 -0.006)">
+        <g id="Group_11980" data-name="Group 11980" transform="translate(0)">
+          <path id="Path_4388" data-name="Path 4388" d="M173.989,58.883l81.542,81.542,81.531-81.541a115.306,115.306,0,0,0-163.073,0Z" transform="translate(-173.989 -25.109)" fill="#9b9b6e"/>
+        </g>
+      </g>
+      <g id="Group_11987" data-name="Group 11987" transform="translate(81.32 115.317)">
+        <g id="Group_11984" data-name="Group 11984">
+          <path id="Path_4390" data-name="Path 4390" d="M251.491,197.29a71.866,71.866,0,0,0,50.974-21.113L251.5,125.21l-50.976,50.969A71.862,71.862,0,0,0,251.491,197.29Z" transform="translate(-200.522 -125.21)" fill="#8e8e8e"/>
+        </g>
+      </g>
+      <g id="Group_11991" data-name="Group 11991" transform="translate(132.296 43.85)">
+        <g id="Group_11988" data-name="Group 11988">
+          <path id="Path_4392" data-name="Path 4392" d="M316.228,63.173,244.772,134.64l71.453,71.452a101.06,101.06,0,0,0,0-142.918Z" transform="translate(-244.772 -63.173)" fill="#b9b9b9"/>
+        </g>
+      </g>
+      <g id="Group_11995" data-name="Group 11995" transform="translate(0 21.762)">
+        <g id="Group_11992" data-name="Group 11992">
+          <path id="Path_4394" data-name="Path 4394" d="M262.228,137.554,168.674,231.1a132.315,132.315,0,0,1,0-187.1Z" transform="translate(-129.932 -44)" fill="#d9a518"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_12002" data-name="Group 12002" transform="translate(-11677.415 475.878)">
+      <g transform="matrix(1, 0, 0, 1, -74.58, -57.61)" filter="url(#Ellipse_17)">
+        <circle id="Ellipse_17-2" data-name="Ellipse 17" cx="42.215" cy="42.215" r="42.215" transform="translate(90.07 73.1)" fill="url(#linear-gradient)"/>
+      </g>
+      <circle id="Ellipse_18" data-name="Ellipse 18" cx="40.803" cy="40.803" r="40.803" transform="translate(0 57.704) rotate(-45)" fill="url(#linear-gradient-2)"/>
+      <g id="Group_12000" data-name="Group 12000" transform="translate(24.408 24.408)">
+        <g id="Group_11997" data-name="Group 11997">
+          <circle id="Ellipse_19" data-name="Ellipse 19" cx="33.297" cy="33.297" r="33.297" fill="url(#linear-gradient-3)"/>
+        </g>
+        <g id="Group_11999" data-name="Group 11999">
+          <g id="Group_11998" data-name="Group 11998" opacity="0.6" style="mix-blend-mode: overlay;isolation: isolate">
+            <circle id="Ellipse_20" data-name="Ellipse 20" cx="33.297" cy="33.297" r="33.297"/>
+          </g>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -74.58, -57.61)" filter="url(#Ellipse_21)">
+        <circle id="Ellipse_21-2" data-name="Ellipse 21" cx="31.067" cy="31.067" r="31.067" transform="translate(101.22 84.25)" fill="url(#linear-gradient-2)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/about.css' %}>
+{% endblock %}
+
+{% block banner-content %}
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Edit Metals</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+
+<div class="bg-white">
+    <br><br><br>
+    <div class="container-fluid metals-row">
+        <div class="card-palladium card-bg1">
+            <img src={% static 'img/group-12194.svg' %} alt="Palladium Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Palladium</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-palladium">+350 (+5.04%)</p>
+        </div>
+        <div class="card-gold card-bg2">
+            <img src={% static 'img/group-12195.svg' %} alt="Gold Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Gold</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-gold">+350 (+5.04%)</p>
+        </div>
+        <div class="card-silver card-bg3">
+            <img src={% static 'img/group-12196.svg' %} alt="Silver Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Silver</h2>
+            </div>
+            <div class="card-details">
+                <button class="red">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+            </div>
+            <p class="card-text-silver">+350 (+5.04%)</p>
+        </div>
+        <div class="card-platinum card-bg4">
+            <img src={% static 'img/group-12197.svg' %} alt="Platinum Image error">
+            <div class="card-content">
+                <h2 class="shade-card-heading">Platinum</h2>
+            </div>
+            <div class="card-details">
+                <button class="green">
+                    <i class="fas fa-arrow-up"></i>
+                    $3,050
+                </button>
+
+            </div>
+            <p class="card-text-platinum">+350 (+5.04%)</p>
+        </div>
+    </div>
+
+    <div class="container-fluid table-borderless position-relative">
+
+
+        <h1 class="table-heading" style="font-family: myFont-Bold;">Gold</h1>
+        <div class="col-md-12">
+
+            <table class="table">
+                <thead>
+                    <tr class="headings-table">
+                        <th scope="col">Metal</th>
+                        <th scope="col">Buy Price</th>
+                        <th scope="col">Sell Price</th>
+                        <th scope="col">Last Price</th>
+                        <th scope="col">Lowest Price</th>
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" class="circle-cell">9k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell">10k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell">14k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell">22k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell">24k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+</div>
+</div>
+
+{% endblock %}

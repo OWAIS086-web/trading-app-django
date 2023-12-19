@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="overflow-y: scroll; max-height: 400px;">
+    <h2>Portfolio Chart of  {{ user_portfolio_data.display_name|safe }}</h2> 
+  
+   
+    <div class="container" style="width: 600px; height: 400px;">
+        <canvas id="user-chart"></canvas>
+    </div>
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Function to convert Decimal strings to numbers
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById("user-chart").getContext("2d");
+            var acquisitionValues = {{ acquisitionValues|safe }};
+    
+            var chart = new Chart(ctx, {
+                type: "doughnut",
+                data: {
+                    labels: {{ labels|safe }}, // Use the 'labels' array
+                    datasets: [
+                        {
+                            label: "cost of metal",
+                            backgroundColor: [
+                                "rgba(75, 192, 192, 0.2)",
+                                "rgba(255, 99, 132, 0.2)",
+                                "rgba(255, 206, 86, 0.2)",
+                                "rgba(255, 159, 64, 0.2)", // Rose Gold
+                                "rgba(255, 192, 203, 0.2)", // Pink
+                                "rgba(173, 216, 230, 0.2)", // Light Blue
+                                "rgba(255, 215, 0, 0.2)",   // Gold
+                                "rgba(219, 112, 147, 0.2)", // Orchid
+                                "rgba(60, 179, 113, 0.2)",  // Medium Sea Green
+                                "rgba(238, 130, 238, 0.2)", // Violet
+                                "rgba(255, 140, 0, 0.2)",   // Dark Orange
+                                "rgba(128, 0, 128, 0.2)",   // Purple
+                                "rgba(0, 139, 139, 0.2)",   // Dark Cyan
+                                "rgba(0, 0, 128, 0.2)",     // Navy
+                                "rgba(128, 128, 0, 0.2)",   // Olive
+                            ],
+                            borderColor: [
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(255, 159, 64, 1)", // Rose Gold
+                                "rgba(255, 192, 203, 1)", // Pink
+                                "rgba(173, 216, 230, 1)", // Light Blue
+                                "rgba(255, 215, 0, 1)",   // Gold
+                                "rgba(219, 112, 147, 1)", // Orchid
+                                "rgba(60, 179, 113, 1)",  // Medium Sea Green
+                                "rgba(238, 130, 238, 1)", // Violet
+                                "rgba(255, 140, 0, 1)",   // Dark Orange
+                                "rgba(128, 0, 128, 1)",   // Purple
+                                "rgba(0, 139, 139, 1)",   // Dark Cyan
+                                "rgba(0, 0, 128, 1)",     // Navy
+                                "rgba(128, 128, 0, 1)",   // Olive
+                            ],
+                            data: {{ acquisitionValues|safe }}, // Use the numeric values
+                        },
+                    ],
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'right', // Align legend to the left
+                        },
+                        title: {
+                            display: true,
+                            text: 'Portfolio Value by Metal'
+                        },
+                    },
+                },
+            });
+        });
+    </script>
+    
+    
+{% endblock %}

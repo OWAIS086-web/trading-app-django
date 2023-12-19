@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% comment %} {% block head_title %}{% trans "Features | Priority Gold Plus" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %} 
+<link rel="stylesheet" type="text/css" href={% static 'css/features.css' %}>
+{% endblock %}
+
+{% block banner-content %} 
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Features</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+
+
+
+<div class="heading-section">
+    <h1 class="scroll-heading">Download Our App</h1>
+    <h1 class="scroll-subheading">Make More Money</h1>
+    
+</div>
+
+<div class="container container-scroll">
+    <div class="cards-container" id="cardsContainer1">
+        <div class="cards-scrollable" id="cardsScrollable1">
+            <div class="container container-card">
+                <div class="circle">
+                    <div class="icon"></div>
+                </div>
+                <h2 class="heading">Dolor sit amet</h2>
+                <p class="paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card">
+                <div class="circle">
+                    <div class="icon"></div>
+                </div>
+                <h2 class="heading">Dolor sit amet</h2>
+                <p class="paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card">
+                <div class="circle">
+                    <div class="icon"></div>
+                </div>
+                <h2 class="heading">Dolor sit amet</h2>
+                <p class="paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card">
+                <div class="circle">
+                    <div class="icon"></div>
+                </div>
+                <h2 class="heading">Dolor sit amet</h2>
+                <p class="paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card">
+                <div class="circle">
+                    <div class="icon"></div>
+                </div>
+                <h2 class="heading">Dolor sit amet</h2>
+                <p class="paragraph">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <!-- Add more cards here -->
+        </div>
+    </div>
+    <div class="phone-image"></div>
+    <div class="cards-container" id="cardsContainer2">
+        <div class="cards-scrollable" id="cardsScrollable2">
+            <div class="container container-card-left">
+                <div class="circle-left">
+                    <div class="icon-left"></div>
+                </div>
+                <h2 class="heading-left">Dolor sit amet</h2>
+                <p class="paragraph-left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card-left">
+                <div class="circle-left">
+                    <div class="icon-left"></div>
+                </div>
+                <h2 class="heading-left">Dolor sit amet</h2>
+                <p class="paragraph-left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card-left">
+                <div class="circle-left">
+                    <div class="icon-left"></div>
+                </div>
+                <h2 class="heading-left">Dolor sit amet</h2>
+                <p class="paragraph-left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card-left">
+                <div class="circle-left">
+                    <div class="icon-left"></div>
+                </div>
+                <h2 class="heading-left">Dolor sit amet</h2>
+                <p class="paragraph-left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <div class="container container-card-left">
+                <div class="circle-left">
+                    <div class="icon-left"></div>
+                </div>
+                <h2 class="heading-left">Dolor sit amet</h2>
+                <p class="paragraph-left">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur.</p>
+            </div>
+            <!-- Add more cards here -->
+        </div>
+
+        <div class="container">
+            <div class="col-md-4 footer-ns animated fadeInRight">
+                <ul class="bottom-ul-btn">
+                    <li class="li-btn">
+                        <div class="download apple">
+                            <i class='fa'><img src={% static 'img/apple_icon.svg' %} alt="Image error"></i>
+                            <span class="p1" style="font-weight: bold;">Available on the</span>
+                            <span class="p2">App Store</span>
+                        </div>
+                    </li>
+                    <li class="li-btn">
+                        <div class="download android">
+                            <i class='fab'><img src={% static 'img/play-store.svg' %} alt="Image error"></i>
+                            <span class="p1">GET IT ON</span>
+                            <span class="p2">Google Play</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<br>
+<br>
+
+
+<div class="col-lg-12 mol-md-12 bg-white">
+    <div class="container container-div" style="margin-bottom: -180px;">
+        <div class="download-section">
+            <h1 class="download-heading">Download</h1>
+            <h1 class="download-heading">Our App Now!!!</h1>
+            <p class="download-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco.</p>
+            <div class="container">
+                <div class="col-md-4 footer-ns animated fadeInRight">
+                    <ul class="home-ul-btn">
+                        <li class="li-btn">
+                            <div class="download apple">
+                                <i class='fa'><img src={% static 'img/apple_icon.svg' %} alt="Image error"></i>
+                                <span class="p1" style="font-weight: bold;">Available on the</span>
+                                <span class="p2">App Store</span>
+                            </div>
+                        </li>
+                        <li class="li-btn">
+                            <div class="download android">
+                                <i class='fab'><img src={% static 'img/play-store.svg' %} alt="Image error"></i>
+                                <span class="p1">GET IT ON</span>
+                                <span class="p2">Google Play</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="image-section">
+            <img src={% static 'img/download-app.png' %} alt="Image error" class="download-image-2">
+        </div>
+    </div>
+</div>
+
+<div class="bg-white">
+    <div class="container-fluid container-section">
+
+        <div class="bg-white">
+
+            <div class="container container-container">
+                <div class="image-container">
+                    <img src={% static 'img/group-12207.png' %} alt="Image error">
+                    <div class="content-container">
+                        <h1 class="main-heading-container">Get Started</h1>
+                        <h1 class="sub-heading-container">with Priority Gold</h1>
+                        <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.Lorem
+                            ipsum
+                            dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <button class="my-button-container">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block body-content-footer %}
+<script>
+
+    const container1 = document.getElementById('cardsScrollable1');
+const container2 = document.getElementById('cardsScrollable2');
+
+let isScrolling = false;
+
+container1.addEventListener('scroll', syncScroll);
+container2.addEventListener('scroll', syncScroll);
+
+function syncScroll(e) {
+    if (isScrolling) return;
+
+    const scrollPosition = e.target.scrollTop;
+    const otherContainer = e.target === container1 ? container2 : container1;
+
+    isScrolling = true;
+    otherContainer.scrollTop = scrollPosition;
+    isScrolling = false;
+}
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('#portfolio-dropdown').select2();
+    });
+</script>
+{% endblock %} 

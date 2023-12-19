@@ -1,0 +1,128 @@
+{% extends "account/base.html" %}
+{% load bootstrap5 %}
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+{% comment %} {% block head_title %}{% trans "Sign In | Priority Gold Plus" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block head_custom_css %}  
+<link rel="stylesheet" type="text/css" href={% static 'css/login.css' %}>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="back-button">
+        <a href="/"><img src={% static 'img/back-button.png' %} alt="back"></a>
+    </div>
+    <div class="back-heading">Back</div>
+    <div class="container">
+        <div class="col-lg-5">
+            <div class="left-section">
+                <div class="logo">
+                    <img src={% static 'img/group-8.svg' %} alt="Logo">
+                </div>
+                <div class="form">
+                    <h2>{% trans "Welcome Back!" %}</h2>
+                    <p>{% trans "Please use your email and password to login." %}</p>                                
+                    {% if form.errors %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <p>{% trans "Your email and password didn't match. Please try again." %}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>                
+                    {% endif %}  
+                    {% if next %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {% if user.is_authenticated %}
+                        <p>{% trans "Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access." %}</p>
+                        {% else %}
+                        <p>{% trans "Please login to see this page." %}</p>
+                        {% endif %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        <div class="form-group"><label class="form-label" for="id_login">Email Address*</label><input type="email" name="login" placeholder="example@domain.com" autocomplete="email" class="form-control" title="" required id="id_login"></div>
+                        <div class="form-group"><label class="form-label" for="id_password">Password*</label>
+                            <input type="password" name="password" placeholder="Password" autocomplete="current-password" class="form-control" title="" required id="id_password">
+                            <span class="eye" onclick="myFucntion()">
+                                <i id="hide1" class="fa fa-eye"></i>
+                                <i id="hide2" class="fa fa-eye-slash"></i>
+                            </span>                        
+                        </div>                        
+                        {% comment %} {% bootstrap_field form.login form_group_class='form-group' %}
+                        {% bootstrap_field form.password form_group_class='form-group' %} {% endcomment %}
+                        <div class="checkbox-color">
+                            <input type="checkbox" id="remember" class="custom-checkbox">
+                            <label class="mm-checkbox" for="remember">Remember Me</label>
+                            <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        </div>
+                        {% comment %} {{ form.as_p }} {% endcomment %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <button class="signup-button" type="submit">{% trans "Login" %}</button>
+                          
+                        {% url 'portfolio:portfolio' as portfolio_url %}
+                        <input type="hidden" name="next" value="{{portfolio_url}}">
+                        {% url 'users:sign_up' as sign_up_url %}
+                        {% get_providers as socialaccount_providers %}
+                        {% if socialaccount_providers %}
+                        <p class="line">{% blocktrans%} Don't Have An Account? <a href="{{ sign_up_url }}">Sign Up</a>{% endblocktrans %}</p>                
+                        <div class="socialaccount_ballot">
+                        <ul class="social-buttons">
+                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        </ul>
+                        </div>
+                        {% include "socialaccount/snippets/login_extra.html" %}
+                        {% else %}
+                        <p class="line">{% blocktrans %}If you have not created an account yet, then please
+                        <a href="{{ sign_up_url }}">Sign up</a> first.{% endblocktrans %}</p>
+                        {% endif %}
+                    </form>                    
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="right-section"><img src={% static 'img/signup-img.png' %}></div>
+        </div>
+    </div>
+    <div class="back">
+        <img src={% static 'img/background-eagle.svg' %}>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script>
+            function myFucntion() {
+                var x = document.getElementById("id_password");
+                var y = document.getElementById("hide1");
+                var z = document.getElementById("hide2");
+                if (x.type === 'password') {
+                    x.type = "text";
+                    y.style.display = "block";
+                    z.style.display = "none"
+                }
+                else  {
+                    x.type = "password";
+                    y.style.display = "none";
+                    z.style.display = "block"
+                }
+            }
+        </script>
+        {% endblock %}

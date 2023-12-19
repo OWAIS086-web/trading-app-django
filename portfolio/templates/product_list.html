@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/about.css' %}>
+{% endblock %}
+
+{% block banner-content %}
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} alt="Banner Image error">
+    <h1 class="banner-heading">{% trans "Products" %}</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+<div class="bg-whitelist">
+<br><br><br>
+
+<section class="Metal-update">
+    {% for metal in distinct_metals %}
+    <div class="container table-borderless">
+        <h1 class="table-heading">{{ metal.metal_name }}</h1>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="headings-table">
+                        <th scope="col">{% trans "Product" %}</th>
+                        <th scope="col">{% trans "Sku" %}</th>                        
+                        <th scope="col">{% trans "Active" %}</th>                        
+                        <th scope="col" class="number">{% trans "Family" %}</th>                    
+                        <th scope="col" class="number">{% trans "Grade" %}</th>                    
+                        <th scope="col" class="number text-danger">{% trans "Factor Rate" %}</th>
+                        <th scope="col" class="number">{% trans "Ask" %}</th>                    
+                        <th scope="col" class="number">{% trans "Base Ask" %}</th>                    
+                        <th scope="col" class="number">{% trans "Bid" %}</th>
+                        <th scope="col">{% trans "Updated On" %}</th>
+                        <th scope="col">{% trans "Price On" %}</th>
+                        <th scope="col">{% trans "Edit" %}</th>
+                    </tr>
+                </thead>
+                {% for entry in products_data %}
+                    {% if entry.metal.metal_name == metal.metal_name %}
+                    <tbody>
+                        <tr>
+                            {% if entry.metal.metal_name == 'Gold' %}
+                            <td scope="row" class="circle-cell-gold">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Platinum' %}
+                            <td scope="row" class="circle-cell-palladium">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Silver' %}
+                            <td scope="row" class="circle-cell-silver">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Palladium' %}
+                            <td scope="row" class="circle-cell-palladium">{{ entry.product.product_name }}</td>
+                            {% endif %}      
+                            <td>{{ entry.product.sku }}</td>
+                            <td>{{ entry.product.is_active }}</td>
+                            <td>{{ entry.product_family.productfamily_name }}</td>
+                            <td>{{ entry.grade.grade_name }}</td> 
+                            <td class="text-danger">{{ entry.product.factor_rate }}</td>            
+                            <td class="number">${{ entry.ask }}</td>
+                            <td class="number">${{ entry.base_ask }}</td>
+                            <td class="number">${{ entry.bid }}</td>
+                            <td>{{ entry.product_updated }}</td>
+                            <td>{{ entry.price_updated }}</td>
+
+                            {% comment %} <td class="number">{{ entry.metal_quantity }}</td>
+                            <td class="number">${{ entry.acquisition_value|intcomma }}</td>
+                            
+                            <td class="number"> ${{ entry.current_value|intcomma }}</td>
+                            <td class="number-center">{{ entry.percentage_change }}%</td>
+                            <td class="number">${{ entry.difference_value|intcomma }}</td> {% endcomment %}
+
+                            <td style="    width: 100%;
+                            justify-content: space-around;
+                            display: flex;">
+                                <button class="load-more-btn2" id="openEditProduct" data-id="{{ entry.product.id }}" onclick="openEditProductModal(this.getAttribute('data-id'))">Edit Product</button>
+                                {% comment %} <a class="load-more-btn-red" onclick="openMetalPopup()" data-id="{{ entry.portfolio_id }}" href="#">Remove</a>                                {% endcomment %}
+                            </td>                            
+                        </tr>
+                    </tbody>
+                    {% endif %} 
+                {% endfor %}            
+            </table>                            
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+</section>
+{% endblock %}

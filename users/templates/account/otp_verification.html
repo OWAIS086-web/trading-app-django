@@ -1,0 +1,89 @@
+{% extends "account/base.html" %}
+{% load bootstrap5 %}
+{% load i18n %}
+{% load static %}
+
+{% comment %} {% block head_title %}{% trans "Verify OTP | Priority Gold Plus" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+
+
+{% block head_custom_css %}  
+<link rel="stylesheet" type="text/css" href={% static 'css/otp.css' %}>
+
+{% endblock %}
+
+{% block content %}
+    <div class="back-button">
+    <a  href="{% url 'users:sign_up'%}"><img  src={% static 'img/back-button.png'%} ></a>
+    </div>
+    <div class="back-heading">Back</div>
+    {% comment %} <h1>{% trans "Verify OTP" %}</h1> {% endcomment %}
+
+    <form class="container" method="post" action="{% url 'users:user_otp_verification' uidb64=uidb64 token=token %}">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        <div class="col-lg-5">
+            <div class="left-section">
+                <div class="logo"></div>
+                <div class="form-group">
+                    <h2>Enter OTP</h2>
+                    <p>Please enter OTP sent to your email.</p>
+                    <div class="otp-input">
+                        <input type="text" class="form-control" id="digit1" name="digit1" required maxlength="1" onkeyup="clickEvent(event, this, 'digit2', 'none')">
+                        <input type="text" class="form-control" id="digit2" name="digit2" required maxlength="1" onkeyup="clickEvent(event, this, 'digit3', 'digit1')">
+                        <input type="text" class="form-control" id="digit3" name="digit3" required maxlength="1" onkeyup="clickEvent(event, this, 'digit4', 'digit2')">
+                        <input type="text" class="form-control" id="digit4" name="digit4" required maxlength="1" onkeyup="clickEvent(event, this, 'digit5', 'digit3')">
+                        <input type="text" class="form-control" id="digit5" name="digit5" required maxlength="1" onkeyup="clickEvent(event, this, 'digit6', 'digit4')">
+                        <input type="text" class="form-control" id="digit6" name="digit6" required maxlength="1" onkeyup="clickEvent(event, this, 'none', 'digit5')">
+                    </div>
+                    <button type="submit">Submit</button>
+                    {% comment %} head_title='Resend OTP | Priority Gold Plus' {% endcomment %}
+                     <h3 class="forget-line">Didn't Receive OTP? <a href={% url 'users:user_resend_otp' uidb64=uidb64 token=token %}>Send Again</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="right-section"><img src={% static 'img/login-img.png' %}></div>
+        </div>
+    </form>
+    <div class="back">
+        <img src={% static 'img/background-eagle.svg' %}>
+    </div>
+
+    <script type="text/javascript">
+        function clickEvent(event, currentInput, nextInputId, previousInputId) {
+            const keyPressed = event.key;
+
+            if (keyPressed === "Backspace" && currentInput.value.length === 0 && previousInputId !== 'none') {
+                document.getElementById(previousInputId).focus();
+            } else if (currentInput.value.length && nextInputId !== 'none') {
+                document.getElementById(nextInputId).focus();
+            }
+        }
+
+        function submitOTP() {
+            const otpValues = [];
+            const otpInputs = document.querySelectorAll('.otp-input input');
+
+            otpInputs.forEach(function (input) {
+                otpValues.push(input.value);
+            });
+
+            const otpCode = otpValues.join('');
+            console.log('OTP Code:', otpCode);
+
+            // Add your logic to handle the OTP code here
+        }
+    </script>
+{% endblock %}

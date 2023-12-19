@@ -1,0 +1,523 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head_custom_css %} {% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>{% block head_title %}{{ head_title }}{% endblock %}</title>
+<style>
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .otp-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 48px;
+        margin-left: 5px;
+        margin-bottom: 26px;
+    }
+
+    .otp-input input[type="text"] {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border: none;
+        border-radius: 50%;
+        margin: 0 5px;
+        font-size: 18px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .otp-input p {
+        margin-bottom: 10px;
+    }
+
+    .right-section img {
+        width: 100%;
+    }
+    #errorAlert {
+        /* position: fixed; */
+        /* top: 10%; You can adjust the top position as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20%; /* You can adjust the width as needed */
+        padding: 15px;
+        /*background-color: #F8D7DA;*/
+        /*color: #721C24;*/
+        /*border: 1px solid #F5C6CB;*/
+        z-index: 9999;
+      }
+      /* Styling for the close button */
+      #errorAlert .close {
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1;
+        color: #721C24;
+        text-shadow: none;
+        opacity: 0.8;
+      }
+      /* Show the alert when the target is #errorAlert */
+      #errorAlert:target {
+        display: block;
+      }
+      .alert.fade {
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      .alert.fade.show {
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
+
+        @media (max-width:2880px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -3000px;
+                margin-top: -799px;
+
+            }
+        }
+        @media (max-width:2780px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -799px;
+            }
+        }
+        @media (max-width:2680px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -799px;
+            }
+        }
+        @media (max-width:2580px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -799px;
+            }
+        }
+        @media (max-width:2480px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -799px;
+            }
+        }
+        @media (max-width:2380px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -999px;
+            }
+        }
+        @media (max-width:2280px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:2180px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:2080px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+
+            }
+        }
+        @media (max-width:1980px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1880px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1780px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 223px;
+                width: 1030px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1680px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 293px;
+                width: 1000px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1580px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 383px;
+                width: 930px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1480px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 383px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1380px) {
+            body {
+                padding-top: 80px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 323px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:1280px) {
+            body {
+                padding-top: 30px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media(max-width: 1213px) {
+            body {
+                padding-top: 290px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+            .logo img {
+                width: auto;
+                height: 115px;
+                margin-left: -163px;
+            }
+            .right-section img {
+                margin-left: 0px;
+            }
+        }
+        @media(max-width:1200px) {
+            body {
+                padding-top: 290px;
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+            .logo img {
+                width: auto;
+                height: 115px;
+                margin-left: -163px;
+            }
+            .right-section img {
+                margin-left: 0px;
+            }
+            .left-section {
+                padding: 0px;
+            }
+        }
+        @media (max-width:1120px) {
+            body {
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:992px) {
+            body {
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+        }
+        @media (max-width:992px) {
+            body {
+                background-color: #FEFAEA;
+            }
+            .back img {
+                height: auto;
+                padding-top: 80px;
+                width: 800px;
+                z-index: -1;
+                margin-left: -307px;
+                margin-top: -1090px;
+            }
+            .right-section img {
+                height: auto;
+                width: 400px;
+            }
+            .logo img {
+                width: auto;
+                height: 115px;
+                margin-left: 2px;
+            }
+        }
+
+
+</style>
+
+<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+  </head>
+
+  <body>
+
+    {% comment %} {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %} {% endcomment %}
+{% comment %}
+    {% if form.errors %}
+    <section>
+    <div id="errorAlert" class="alert alert-warning alert-dismissible fade show">
+        <p><strong>{% trans "Errors!" %}</strong> {% trans "You should check in on some of those fields below." %}</p>
+        <ul>
+            {% for field in form %}
+            {% if field.errors %}
+                <li><strong>{{ field.label }}:</strong></li>
+                <ul>
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <a onclick="closeForm()" class="close" data-dismiss="alert" aria-label="Close">×</a>
+
+    </div>
+</section>
+{% else %} {% endcomment %}
+{% if messages %}
+<section>
+    <div id="errorAlert" class="alert alert-info alert-dismissible fade show">
+        <p><strong>{% trans "Messages!" %}</strong> </p>
+        <ul>
+            <ul>
+            {% for message in messages %}
+
+                <li>{{ message }}</li>
+            {% endfor %}
+
+            </ul>
+        </ul>
+        <a onclick="closeForm()" class="close" data-dismiss="alert" aria-label="Close">×</a>
+    </div>
+</section>
+{% endif %}
+
+
+    {% comment %} {% endif %} {% endcomment %}
+
+    {% block content %}{% endblock %}
+    {% comment %} <div>
+      <strong>Menu 7:</strong>
+      <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        {% else %} {% endcomment %}
+        {% comment %} <li><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li><a href="{% url 'account_signup' %}">Sign Up</a></li> {% endcomment %}
+        {% comment %} <li><a href="#">Sign In</a></li>
+        <li><a href="#">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>     {% endcomment %}
+    {% block extra_body %}{% endblock %}
+    <script>
+        function closeForm() {
+            document.getElementById('errorAlert').style.display = 'none';
+            document.body.classList.remove("alert-open");
+        }
+    </script>
+    <script>
+        // Function to close the messages after 4 seconds
+        function closeMessages() {
+          var errorAlert = document.getElementById('errorAlert');
+          if (errorAlert) {
+            errorAlert.classList.add('fade', 'show');
+            setTimeout(function() {
+              errorAlert.classList.remove('show');
+            }, 4000); // 4 seconds (4000 milliseconds)
+          }
+        }
+
+        // Call the closeMessages function after the page is loaded
+        window.addEventListener('load', closeMessages);
+      </script>
+  </body>
+</html>

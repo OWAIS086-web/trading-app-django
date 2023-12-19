@@ -1,0 +1,111 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load static %}
+{% block head_title %}{% trans "Sign Out | Priority Gold Plus" %}{% endblock %}
+{% block head_custom_css %}
+<style>
+    #popup2 {
+        /* display: none; */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 380px;
+        transform: translate(-50%, -50%);
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    }
+
+    .popup2 h2 {
+        font-family: "myFont-Bold";
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .popup2 .save-now {
+        width: 100px;
+        border-radius: 27px;
+        background: linear-gradient(283deg, #ba7607, #edcc45);
+        color: #fff;
+        border: none;
+        font-size: 12px;
+        text-align: center;
+        align-items: center;
+        font-family: "myFont-Medium";
+        height: 30px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    .popup2 .cancel {
+        width: 100px;
+        border-radius: 27px;
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        font-size: 12px;
+        text-align: center;
+        align-items: center;
+        font-family: "myFont-Medium";
+
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .popup-overlay {
+        /* display: none; */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9998;
+    }
+
+    body.popup-open {
+        overflow: hidden;
+    }
+
+    body.popup-open .popup-overlay {
+        display: block;
+    }
+
+    .form-heading {
+        font-family: "Poppins-Bold";
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .buttons {
+        display: flex;
+        padding-top: 10px;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="popup-overlay"></div>
+
+<div class="popup2" id="popup2">
+    <form method="post">
+        {% csrf_token %}
+        <h2>{% trans 'Confirm That' %}</h2>
+        <h2>{% trans 'You Wish To Log Out.' %}</h2>
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}        
+        <div class="buttons">
+            {% comment %} <button type="submit" action="{% url 'account_logout' %}" class="save-now">{% trans 'Yes, Sure' %}</button> {% endcomment %}
+            <button class="cancel" onclick="closePopup()">{% trans 'Not Now' %}</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+{% endblock %}

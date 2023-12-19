@@ -1,0 +1,24 @@
+{% extends 'base_basic.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+
+{% block body-content %}
+<div class="popup-form-delete" id="popupForm">
+    <span class="close-icon" onclick="closeForm()"><img src="{% static 'img/icon-cancel.svg' %}" alt=""></span>
+    {% comment %} <form id="deletePortfolioForm" method="post" action="/portfolio/" {{ form.id.value }} " /delete/"> {% endcomment %}
+        <form id="deletePortfolioForm" method="post" action="{% url 'portfolio:delete_portfolio' %}{{ form.id.value }}/">
+        {% csrf_token %}
+        {% comment %} <div><h1 class="form-heading">Delete Metal</h1></div> {% endcomment %}
+        {% bootstrap_field form.id form_group_class='form-group' %}        
+        <div class="Notice">
+        <h1 class="notice-heading">Are You Sure, You Want To Delete?</h1>
+        </div>
+        <div class="form-button">
+            <button type="submit" class="load-more-btn2">Yes, Sure</button>
+            <a style="color:white;" class="grid-btn-red" onclick="closeForm()">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

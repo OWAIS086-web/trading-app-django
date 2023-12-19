@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %} 
+{% load static %} 
+
+{% block content %}
+
+
+<div class="chart-container">
+    <canvas id="userProductChart"></canvas>
+</div>
+
+<script>
+    // Use Django template tags to obtain variables from the template context
+    var userLabels = JSON.parse('{{ user_labels|safe }}');
+    var productCounts = JSON.parse('{{ product_counts|safe }}');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // chart.js
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById("userProductChart").getContext("2d");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: userLabels,
+                datasets: [
+                    {
+                        label: "Number of Products",
+                        data: productCounts,
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    });
+</script>
+
+{% endblock %}

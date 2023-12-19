@@ -1,0 +1,65 @@
+{% extends 'base_basic.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+
+{% block body-content %}
+<div class="popup-form" id="popupForm">
+    <span class="close-icon" onclick="closeForm()"><img src="{% static 'img/icon-cancel.svg' %}" alt=""></span>
+    <form id="editPortfolioForm" method="post" action="{% url 'portfolio:update_portfolio' %}{{ form.id.value }}/">
+        {% comment %} <form id="editPortfolioForm" method="post" action="{% url 'portfolio:update_portfolio' %}"> {% endcomment %}
+        {% csrf_token %}
+        <div>
+            <h1 class="form-heading">Edit Metal</h1>
+        </div>
+        {% bootstrap_field form.id form_group_class='form-group' %}
+        
+        {% comment %} <h1 class="table-heading" style="font-family: myFont-Bold;">{{ form }}</h1> {% endcomment %}
+
+        <div class="two-dropdowns">
+            {% comment %} {% bootstrap_field form.metal form_group_class='form-group' %} {% endcomment %}
+
+            <div class="form-group"><label class="form-label" for="id_metal">Metal</label>
+                <input type="text" name="metal" value="{{ metal_name }}" class="form-control form-controlform-control-ounces" step="any" placeholder="Metal" title="" required="" id="id_metal">
+            </div>
+
+            <div class="form-group"><label class="form-label" for="id_grade">Grade</label>
+                <input type="text" name="grade" value="{{ grade_name }}" class="form-control form-controlform-control-ounces" step="any" placeholder="Grade" title="" required="" id="id_grade">
+            </div>            
+        </div>
+
+        <div class="form-group"><label class="form-label" for="id_product_family">Product Family</label>
+            <input type="text" name="product_family" value="{{ productfamily_name }}" class="form-control form-controlform-control-ounces" step="any" placeholder="Product Family" title="" required="" id="id_product_family">
+        </div>
+
+        <div class="form-group"><label class="form-label" for="id_product">Product</label>
+            <input type="text" name="product" value="{{ product_name }}" class="form-control form-controlform-control-ounces" step="any" placeholder="Product" title="" required="" id="id_product">
+        </div>
+
+    <div class="ounces-dropdown">
+        <div class="form-group"><label class="form-label" for="id_ounces">Ounces</label>
+            <input type="number" name="ounces" value="{{ ounces }}" class="form-control form-controlform-control-ounces" step="any" placeholder="Ounces" title="" required="" id="id_ounces">
+        </div>
+        <div class="form-group"><label class="form-label" for="id_metal_quantity">Quantity</label>
+            <input type="number" name="{{ form.metal_quantity.name }}" value="{{ metal_quantity|default_if_none:'0.00' }}" class="form-control" step="any" placeholder="Quantity" title="" required="" id="id_metal_quantity">
+        </div> 
+    </div>
+
+    {% comment %} {% bootstrap_field form.metal_quantity form_group_class='form-group' %} {% endcomment %}
+
+    <div class="ounces-dropdown">
+        <div class="form-group"><label class="form-label" for="id_acquisition_cost">Acquisition Cost</label>
+            <input type="number" name="{{ form.acquisition_cost.name }}" value="{{ form.acquisition_cost.value }}" class="form-control" step="any" placeholder="Acquisition Cost" title="" required="" id="id_acquisition_cost">
+        </div>
+        {% bootstrap_field form.purchase_date form_group_class='form-group' %}
+        <input type="hidden" name="factor_rate" value="0" id="id_factor_rate">
+        <input type="hidden" name="ask" value="0" id="id_ask">
+    </div>
+
+    <div class="form-button">
+            <button type="submit" class="metals-button">Save & Continue</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

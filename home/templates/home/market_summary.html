@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "Market Summary | Priority Gold" %}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/market.css' %}">
+
+{% endblock %}
+
+{% block banner-content %}
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Market Summary</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+<div class="container-market-summary">
+    <div class="card-market-summary">
+        <div class="row card-row-market-summary">
+            <button class="golden-button-market-summary"
+                style="font-family: 'myFont-Medium'; color: white;">Exchange</button>
+            <p class="card-text-market-summary line-p"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px;">Status:</span> Suspended
+            </p>
+            <p class="card-text-market-summary"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px;">Volume:</span>
+                86,2165,1629</p>
+            <p class="card-text-market-summary"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px;">Value:</span>
+                86,2165,1629</p>
+            <p class="card-text-market-summary"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px;">Trades:</span>
+                86,2165,1629</p>
+        </div>
+    </div>
+</div>
+<div class="container-market-summary2">
+    <div class="card-market-summary2">
+        <div class="row card-row-market-summary2">
+            <button class="golden-button-market-summary2"
+                style="font-family: 'myFont-Medium'; color: white;">Symbol</button>
+            <p class="card-text-market-summary2 line-p" style="color: #17A72A;"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px; color: #17A72A;">Advanced:</span>
+                1756
+            </p>
+            <p class="card-text-market-summary2" style="color:#F80707;"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px; color:#F80707;">Declined:</span>
+                216</p>
+            <p class="card-text-market-summary2" style="color:#0079D5"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px; color:#0079D5">Unchanged:</span>
+                30</p>
+            <p class="card-text-market-summary2"><span
+                    style="font-family: myFont-Bold; padding-top:5px; padding-right:5px;">Total:</span>
+                317</p>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container table-borderless position-relative-card">
+    <h1 class="table-heading" style="font-family: myFont-Bold;">Gold</h1>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr class="headings-table">
+                    <th scope="col">Range</th>
+                    <th scope="col">Buy Price</th>
+                    <th scope="col">Sell Price</th>
+                    <th scope="col">Last Price</th>
+                    <th scope="col">Lowest Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" class="circle-cell">Gold</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell">Gold</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell">Gold</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell">Gold</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell">Gold</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container table-borderless position-relative-card">
+    <h1 class="table-heading" style="font-family: myFont-Bold;">Silver</h1>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr class="headings-table">
+                    <th scope="col">Range</th>
+                    <th scope="col">Buy Price</th>
+                    <th scope="col">Sell Price</th>
+                    <th scope="col">Last Price</th>
+                    <th scope="col">Lowest Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" class="circle-cell-2">Silver</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-2">Silver</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-2">Silver</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-2">Silver</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-2">Silver</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container table-borderless position-relative-card">
+    <h1 class="table-heading" style="font-family: myFont-Bold;">Platinum</h1>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr class="headings-table">
+                    <th scope="col">Range</th>
+                    <th scope="col">Buy Price</th>
+                    <th scope="col">Sell Price</th>
+                    <th scope="col">Last Price</th>
+                    <th scope="col">Lowest Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" class="circle-cell-3">Platinum</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-3">Platinum</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-3">Platinum</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-3">Platinum</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-3">Platinum</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container table-borderless position-relative-card">
+    <h1 class="table-heading" style="font-family: myFont-Bold;">Palladium</h1>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr class="headings-table">
+                    <th scope="col">Range</th>
+                    <th scope="col">Buy Price</th>
+                    <th scope="col">Sell Price</th>
+                    <th scope="col">Last Price</th>
+                    <th scope="col">Lowest Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" class="circle-cell-4">Palladium</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-4">Palladium</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-4">Palladium</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-4">Palladium</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td scope="row" class="circle-cell-4">Palladium</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                    <td>$3,050</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br><br>
+<div class="bg-white">
+    <div class="container container-container">
+        <div class="image-container">
+            <img src={% static 'img/group-12207.png' %} alt="Image error">
+            <div class="content-container">
+                <h1 class="main-heading-container">Get Started</h1>
+                <h1 class="sub-heading-container">with Priority Gold</h1>
+                <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                    ipsum
+                    dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                    adipiscing
+                    elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <button class="my-button-container">Get Started</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="featured-section" style="background-color: white; font-family: 'myFont-Medium';">
+    <p>Featured and seen in</p>
+    <div class="image-row">
+        <img src={% static 'img/circle.png' %} alt="Image error">
+        <img src={% static 'img/earth-2.0.png' %} alt="Image error">
+        <img src={% static 'img/solaytic.png' %} alt="Image error">
+        <img src={% static 'img/kyan.png' %} alt="Image error">
+        <img src={% static 'img/treva.png' %} alt="Image error">
+    </div>
+</div>
+<div style="background-color: white;"><br><br></div>
+
+{% endblock %}

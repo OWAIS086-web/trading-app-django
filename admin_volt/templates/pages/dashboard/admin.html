@@ -1,0 +1,118 @@
+
+{% block content %}
+
+<style>
+  .chart-box {
+      width: 48%;
+      height: 300px;
+      margin: 10px;
+      padding: 20px;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #f4f4f4;
+  }
+
+  /* List of light 3D gradient colors */
+  .gradient-color-1 {
+      background: linear-gradient(45deg, #E2F3F5, #A9D5E6);
+  }
+
+  .gradient-color-2 {
+      background: linear-gradient(45deg, #E5F7E9, #B0E9C6);
+  }
+
+  .gradient-color-3 {
+      background: linear-gradient(45deg, #FFF3E5, #FFD3B5);
+  }
+
+  .chart-box h2 {
+      margin: 0;
+      padding-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+      text-transform: uppercase;
+  }
+</style>
+
+<script>
+    console.log("users_per_day:", {{ foam.users_per_day_data }});
+    console.log("users_per_month:", {{ users_per_month_data}});
+    console.log("users_per_year:", {{ users_per_year_data }});
+</script>
+
+       
+
+
+        <canvas id="userCountChart"></canvas>
+
+          
+ {% endblock %}
+
+ <script>
+    var users_per_day = JSON.parse('{{ users_per_day_data|safe }}');
+    var users_per_month = JSON.parse('{{ users_per_month_data|safe }}');
+    var users_per_year = JSON.parse('{{ users_per_year_data|safe }}');
+    
+    var dayLabels = users_per_day.map(entry => entry.day);
+    var dayCounts = users_per_day.map(entry => entry.count);
+    
+    var monthLabels = users_per_month.map(entry => entry.month);
+    var monthCounts = users_per_month.map(entry => entry.count);
+    
+    var yearLabels = users_per_year.map(entry => entry.year);
+    var yearCounts = users_per_year.map(entry => entry.count);
+    
+    var ctx = document.getElementById('userCountChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dayLabels,
+            datasets: [
+                {
+                    label: 'Users per Day',
+                    data: dayCounts,
+                    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+                    borderColor: 'rgba(255, 215, 0, 1)',
+                    borderWidth: 1,
+                    fill: true,
+                },
+                {
+                    label: 'Users per Month',
+                    data: monthCounts,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: true,
+                },
+                {
+                    label: 'Users per Year',
+                    data: yearCounts,
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1,
+                    fill: true,
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                        displayFormats: {
+                            day: 'YYYY-MM-DD',
+                            month: 'YYYY-MM',
+                            year: 'YYYY'
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>

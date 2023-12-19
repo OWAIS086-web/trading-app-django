@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "The Exchange | Priority Gold" %}{% endblock %}
+{% block extra_head %} 
+<link rel="stylesheet" href="{% static 'css/exchange.css' %}">
+{% endblock %}
+
+{% block banner-content %} 
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">The Exchange</h1>
+    <h1 class="banner-heading2">Coming Soon</h1>
+</div>
+{% endblock %}
+{% block body-content %}
+<br><br>
+<div class="bg-white">
+    <div class="container container-container">
+        <div class="image-container">
+            <img src={% static 'img/group-12207.png' %} alt="Image error">
+            <div class="content-container">
+                <h1 class="main-heading-container">Get Started</h1>
+                <h1 class="sub-heading-container">with Priority Gold</h1>
+                <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                    ipsum
+                    dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                    adipiscing
+                    elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <button class="my-button-container">Get Started</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-section" style="background-color: white; font-family: 'myFont-Medium';">
+    <p>Featured and seen in</p>
+    <div class="image-row">
+        <img src={% static 'img/circle.png' %} alt="Image error">
+        <img src={% static 'img/earth-2.0.png' %} alt="Image error">
+        <img src={% static 'img/solaytic.png' %} alt="Image error">
+        <img src={% static 'img/kyan.png' %} alt="Image error">
+        <img src={% static 'img/treva.png' %} alt="Image error">
+    </div>
+</div>
+<div style="background-color: white;"><br><br></div>
+{% endblock %}

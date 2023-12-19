@@ -1,0 +1,348 @@
+
+.card-subheading {
+  font-family: "myFont-DemiBold";
+  font-size: 15px;
+  text-align: left;
+}
+
+.btn-icon {
+  margin-left: 5px;
+}
+.center-text {
+  text-align: center;
+}
+
+.horizontal-line {
+  border: none;
+  border-top: 1px solid #eba900;
+  margin: 20px 0;
+  margin-bottom: 80px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Card styles */
+.card {
+  width: 600px;
+  margin: 0 10px;
+  padding: 20px;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+.card h2 {
+  text-align: start;
+  font-family: "myFont-Bold";
+}
+.card .card-paragraph {
+  text-align: start;
+  font-size: 13px;
+}
+.card button {
+  float: left;
+  align-items: start;
+}
+.container-box {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 1;
+  margin-top: -195px;
+  margin-bottom: -210px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: center;
+}
+
+.card-s {
+  flex: 1;
+  padding: 20px;
+  background-color: #fefaea;
+  border-radius: 8px;
+  border: 0px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+}
+
+.card-s p {
+  font-family: "myFont-Medium";
+}
+.card-heading-s {
+  font-size: 40px;
+  background: linear-gradient(97deg, #fde966, #cf9102, #8c3c10);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-family: "myFont-Bold";
+  font-weight: bold;
+}
+
+.button-primary {
+  padding: 5px 20px;
+  background-color: #daa520;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: "myFont-Bold";
+  margin-top: 15px;
+}
+
+.button-primary:hover {
+  background-color: darkgoldenrod;
+}
+
+.heading-primary {
+  background: linear-gradient(97deg, #ffffff, #fde966, #cf9102, #8c3c10);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-family: "myFont-Bold";
+  font-size: 40px;
+}
+
+.paragraph {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.center-text {
+  margin-top: 50px;
+}
+
+.main-paragraph {
+  font-family: "myFont-Medium";
+  font-size: 15px;
+}
+.container-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+.bg-pink {
+  background-color: #fefaea;
+  padding-top: 40px;
+  z-index: -1;
+}
+
+.position-relative {
+  padding-top: -150px;
+  background-image: url("/images/background_img.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.section-heading {
+  text-align: center;
+}
+.section-subheading {
+  text-align: center;
+  background: linear-gradient(97deg, #fde966, #cf9102, #8c3c10);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.image-section-second {
+  flex: 1;
+  margin: 20px;
+  margin-left: 20px;
+  z-index: 0;
+  border-radius: 1000px;
+}
+
+.security-section-second {
+  flex: 1;
+  margin: 20px;
+  margin-right: 20px;
+  z-index: 0;
+}
+
+.security-image-second {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  overflow: hidden;
+}
+
+.security-heading-second {
+  font-size: 35px;
+  /* font-weight: bold; */
+  text-align: start;
+  font-family: "myFont-DemiBold";
+}
+
+.security-paragraph-second {
+  font-size: 16px;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.security-button-second {
+  padding: 5px 20px;
+  background: linear-gradient(270deg, #ba7607, #edcc45);
+  float: left;
+  font-size: 12px;
+  font-family: "myFont-Bold";
+  color: white;
+  border: none;
+  width: 130px;
+  border-radius: 20px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.btn-golden-outline {
+  background-color: transparent;
+  height: 50px;
+  width: 140px;
+  font-size: 10px;
+  color: #171717;
+  font-family: "myFont-Bold";
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #eba900;
+  margin-top: 15px;
+  border-radius: 50px;
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+}
+
+.btn-golden-outline .apple-icon,
+.btn-golden-outline .android-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.btn-golden-outline .small-text {
+  font-size: 8px;
+}
+
+.btn-golden-outline .big-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-golden-outline:hover {
+  background-color: #ba7607;
+  color: #171717;
+}
+
+.btn-golden-outline:active {
+  background-color: #ba7607;
+  color: black;
+  outline: none;
+}
+
+.ul-btn {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  display: flex;
+  transform: translate(-50%, -50%);
+}
+.li-btn {
+  display: inline-block;
+  margin: 10px;
+}
+.download {
+  width: 165px;
+  height: 50px;
+  background: white;
+  float: left;
+  border-radius: 25px;
+  position: relative;
+  color: black;
+  cursor: pointer;
+  border: 1px solid goldenrod;
+}
+.download .fa {
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+.download img .fab {
+  color: black;
+  position: absolute;
+  font-size: 24px;
+  top: 50%;
+  left: 19%;
+  transform: translate(-50%, -50%);
+}
+.p1,
+.p2 {
+  position: absolute;
+  left: 50px;
+}
+.p1 {
+  top: 5px;
+  font-size: 12px;
+}
+.p2 {
+  top: 22px;
+  font-size: 16px;
+  font-family: "myFont-DemiBold";
+}
+
+.rectangle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.gold {
+  color: #cf9102;
+}
+
+.value {
+  color: #8c3c10;
+}
+
+.arrow-up {
+  color: #8c3c10;
+  margin-left: 10px;
+}
+
+.green-button {
+  background-color: #8c3c10;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}

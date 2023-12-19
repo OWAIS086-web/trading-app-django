@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% comment %} {% block head_title %}{% trans "Contact Us | Priority Gold Plus" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %} 
+<link rel="stylesheet" type="text/css" href={% static 'css/contact_us.css' %}>
+{% endblock %}
+
+{% block banner-content %} 
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Contact Us</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+
+<div class="background-color">
+
+    <div class="container map-container">
+        <div class="left-section">
+            <!-- <div id="map"></div> -->
+            <img src={% static 'img/map.png' %} alt="Image error">
+        </div>
+        <div class="right-section">
+            <h1 class="heading">Get In Touch</h1>
+            <h1 class="heading-color">With Us</h1>
+            <div class="contact-info">
+                <div class="phone">
+                    <div class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="phone-details">
+                        <p class="phone-number">+1 234-567-8910</p>
+                        <!-- <p class="phone-label">Phone</p> -->
+                    </div>
+                </div>
+                <div class="email">
+                    <div class="email-icon"><i class="fa fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="email-details">
+                        <p class="email-address">admin@prioritygold.com</p>
+                        <!-- <p class="email-label">Email</p> -->
+                    </div>
+                </div>
+                <div class="location">
+                    <div class="location-icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <div class="location-details">
+                        <p class="location-address">119 Racine Street Memphis, TN 38111</p>
+                        <!-- <p class="location-label">Location</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="bg-white">
+
+    <section class="get_in_touch">
+
+        <h1 class="heading">Contact Us</h1>
+        <h1 class="title">Make An Appointment </h1>
+        <!-- <div class="background-color"> -->
+
+        <div class="container">
+            <div class="contact-form row">
+                <div class="form-field col-lg-6">
+                    <input id="name" class="input-text" type="text" name="">
+                    <label for="name" class="label">Your Name</label>
+                </div>
+                <div class="form-field col-lg-6">
+                    <input id="email" class="input-text" type="email" name="">
+                    <label for="email" class="label">Your Email</label>
+                </div>
+                <div class="form-field col-lg-12">
+                    <input id="message" class="input-text" type="text" name="">
+                    <label for="message" class="label">Your Message</label>
+                </div>
+                <div class="form-field col-lg-12">
+                    <button id="name" class="btn-submit" type="submit" name="">Submit Now</button>
+                </div>
+            </div>
+            <!-- </div> -->
+
+        </div>
+    </section>
+</div>
+
+<div class="bg-white">
+    <div class="container-fluid container-section">
+        <div class="bg-white">
+            <div class="container container-container">
+                <div class="image-container">
+                    <img src={% static 'img/group-12207.png' %} alt="Image error">
+                    <div class="content-container">
+                        <h1 class="main-heading-container">Get Started</h1>
+                        <h1 class="sub-heading-container">with Priority Gold</h1>
+                        <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.Lorem
+                            ipsum
+                            dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <button class="my-button-container">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

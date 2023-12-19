@@ -1,0 +1,78 @@
+{% extends "account/base.html" %}
+{% load bootstrap5 %}
+{% load i18n %}
+{% load static %}
+{% block head_title %}Resend OTP | Priority Gold Plus{% endblock %}
+
+{% block head_custom_css %}  
+<link rel="stylesheet" type="text/css" href={% static 'css/login.css' %}>
+{% endblock %}
+
+{% block content %}
+    <div class="back-button">
+    <a  href="{% url 'users:sign_up'%}"><img  src={% static 'img/back-button.png'%} ></a>
+    </div>
+    <div class="back-heading">Back</div>
+    <div class="container">
+        <div class="col-lg-5">
+            <div class="left-section">
+    <form class="form" method="post" action="{% url 'users:user_resend_otp' uidb64=uidb64 token=token %}">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        <h2>Resend OTP</h2>
+        <p>Please enter your email to Resend OTP</p>
+        <div class="form-group" style="margin-bottom: 0px;">
+            <label class="small mb-1" for="id_email"> </label>
+                            <input type="email" name="email"  class="form-control"
+                                   autocomplete="email" maxlength="254" required id="id_email"
+                                   placeholder="Enter email">
+        </div>
+        <button type="submit" class="signup-button">Resend OTP</button>
+    </div>
+</div>
+        <div class="col-lg-7">
+            <div class="right-section"><img src={% static 'img/group-12204.png' %}></div>
+        </div>
+    </div>
+    </form>
+    <div class="back">
+        <img src={% static 'img/background-eagle.svg' %}>
+    </div>
+
+    <script type="text/javascript">
+        function clickEvent(event, currentInput, nextInputId, previousInputId) {
+            const keyPressed = event.key;
+
+            if (keyPressed === "Backspace" && currentInput.value.length === 0 && previousInputId !== 'none') {
+                document.getElementById(previousInputId).focus();
+            } else if (currentInput.value.length && nextInputId !== 'none') {
+                document.getElementById(nextInputId).focus();
+            }
+        }
+
+        function submitOTP() {
+            const otpValues = [];
+            const otpInputs = document.querySelectorAll('.otp-input input');
+
+            otpInputs.forEach(function (input) {
+                otpValues.push(input.value);
+            });
+
+            const otpCode = otpValues.join('');
+            console.log('OTP Code:', otpCode);
+
+            // Add your logic to handle the OTP code here
+        }
+    </script>
+{% endblock %}

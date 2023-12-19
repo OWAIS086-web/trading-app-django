@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Fetching Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="width: 80%; margin: 0 auto;">
+        <canvas id="adminTimeFetchingChart"></canvas>
+    </div>
+
+    <script>
+        // JavaScript code to fetch data from the context and create the chart
+        const usersData = JSON.parse('{{ users_data|safe }}');
+
+        const labels = usersData.map(user => `${user.fname} ${user.lname}`);
+        const timeFetching = usersData.map(user => user.time_fetching);
+
+        const ctx = document.getElementById('adminTimeFetchingChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Time Fetching',
+                    data: timeFetching,
+                    backgroundColor: 'rgba(0, 123, 255, 0.8)',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Time Fetching'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

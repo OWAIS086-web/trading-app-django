@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/about.css' %}>
+{% endblock %}
+
+{% block banner-content %}
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} alt="Banner Image error">
+    <h1 class="banner-heading">Metals</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+
+<div class="bg-whitelist">
+    <br><br><br>
+    <section class="Metals">
+        <div class="container">
+        <div class="list-metals-cards-row">
+                <div class="card-palladium card-bg1">
+                    <img src={% static 'img/group-12194.svg' %} alt="Palladium Image error">
+                    <div class="card-content">
+                        <h2 class="shade-card-heading">Palladium</h2>
+                    </div>
+                    <div class="card-details">
+                        <button class="green">
+                            <i class="fas fa-arrow-up"></i>
+                            $3,050
+                        </button>
+                    </div>
+                    <p class="card-text-palladium">+350 (+5.04%)</p>
+                </div>
+                <div class="card-gold card-bg2">
+                    <img src={% static 'img/group-12195.svg' %} alt="Gold Image error">
+                    <div class="card-content">
+                        <h2 class="shade-card-heading">Gold</h2>
+                    </div>
+                    <div class="card-details">
+                        <button class="green">
+                            <i class="fas fa-arrow-up"></i>
+                            $3,050
+                        </button>
+                    </div>
+                    <p class="card-text-gold">+350 (+5.04%)</p>
+                </div>
+                <div class="card-silver card-bg3">
+                    <img src={% static 'img/group-12196.svg' %} alt="Silver Image error">
+                    <div class="card-content">
+                        <h2 class="shade-card-heading">Silver</h2>
+                    </div>
+                    <div class="card-details">
+                        <button class="red">
+                            <i class="fas fa-arrow-up"></i>
+                            $3,050
+                        </button>
+                    </div>
+                    <p class="card-text-silver">+350 (+5.04%)</p>
+                </div>
+                <div class="card-platinum card-bg4">
+                    <img src={% static 'img/group-12197.svg' %} alt="Platinum Image error">
+                    <div class="card-content">
+                        <h2 class="shade-card-heading">Platinum</h2>
+                    </div>
+                    <div class="card-details">
+                        <button class="green">
+                            <i class="fas fa-arrow-up"></i>
+                            $3,050
+                        </button>
+
+                    </div>
+                    <p class="card-text-platinum">+350 (+5.04%)</p>
+                </div>
+                </div>
+
+
+        </div>
+    </section>
+<section class="Metal-update">
+
+    {% for metal in distinct_metals %}
+    <div class="container table-borderless ">
+        <h1 class="table-heading">{{ metal.metal_name }}</h1>
+
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="headings-table">
+                        <th scope="col">Metal</th>
+                        {% comment %} <th scope="col">Sku</th>{% endcomment %}
+                        {% comment %} <th scope="col">Grade</th> {% endcomment %}
+                        <th scope="col">Ounces</th>
+                        <th scope="col">Purchase</th>
+                        <th scope="col" class="number">Quantity</th>
+                        <th scope="col" class="number">Acquisition</th>
+                        <th scope="col" class="number">Ask</th>
+                        {% comment %} <th scope="col">Base Ask</th> {% endcomment %}
+                        {% comment %} <th scope="col">Bid</th> {% endcomment %}
+                        {% comment %} <th scope="col">Source</th> {% endcomment %}
+                        <th scope="col" class="number">Current</th>
+                        <th scope="col" class="number-center">Change</th>
+                        <th scope="col" class="number">Difference</th>
+                        {% comment %} <th scope="col">Updated</th> {% endcomment %}
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+                {% for entry in portfolio_data %}
+                    {% if entry.metal.metal_name == metal.metal_name %}
+                    <tbody>
+                        <tr>
+                            {% if entry.metal.metal_name == 'Gold' %}
+                            <td scope="row" class="circle-cell-gold">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Platinum' %}
+                            <td scope="row" class="circle-cell-palladium">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Silver' %}
+                            <td scope="row" class="circle-cell-silver">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% if entry.metal.metal_name == 'Palladium' %}
+                            <td scope="row" class="circle-cell-palladium">{{ entry.product.product_name }}</td>
+                            {% endif %}
+                            {% comment %} <td>{{ entry.product.sku }}</td> {% endcomment %}
+                            {% comment %} <td>$3,050</td> {% endcomment %}
+                            {% comment %} <td>$3,050</td> {% endcomment %}
+                            <td class="number">{{ entry.ounces }}</td>
+                            <td>{{ entry.purchase_date }}</td>
+                            <td class="number">{{ entry.metal_quantity }}</td>
+                            <td class="number">${{ entry.acquisition_value|intcomma }}</td>
+                            <td class="number">${{ entry.ask }}</td>
+                            {% comment %} <td>${{ entry.base_ask }}</td> {% endcomment %}
+                            {% comment %} <td>$3,050</td> {% endcomment %}
+                            {% comment %} <td>{{ entry.cost_source }}</td> {% endcomment %}
+                            <td class="number"> ${{ entry.current_value|intcomma }}</td>
+                            <td class="number-center">{{ entry.percentage_change }}%</td>
+                            <td class="number">${{ entry.difference_value|intcomma }}</td>
+                            {% comment %} <td>$3,050</td> {% endcomment %}
+
+                            {% comment %} <td>$3,050</td>
+                            <td>@$3,050</td>
+                            <td>@$3,050</td> {% endcomment %}
+                            <td style="    width: 100%;
+                            justify-content: space-around;
+                            display: flex;">
+                                {% comment %} <button class="load-more-btn2" id="openEditMetal" href="">Edit Metal</button> {% endcomment %}
+                                {% comment %} <button class="load-more-btn2" id="openEditMetal" data-id="{{ entry.portfolio_id }}" href="">Edit Metal</button> {% endcomment %}
+                                <button class="load-more-btn2" id="openEditMetal" data-id="{{ entry.portfolio_id }}" onclick="openEditModal(this.getAttribute('data-id'))">Edit Metal</button>
+                                <button class="grid-btn-red" id="openDeleteMetal" data-id="{{ entry.portfolio_id }}" onclick="openDeleteModal(this.getAttribute('data-id'))">Remove</button>
+                                {% comment %} <a class="load-more-btn-red" id="openDeleteMetal" data-id="{{ entry.portfolio_id }}" href="#">Remove</a> {% endcomment %}
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+    <br>
+    {% endfor %}
+
+    {% comment %} <div class="container table-borderless position-relative">
+        <h1 class="table-heading">{{ metal.metal_name }}</h1>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="headings-table">
+                        <th scope="col">Metal</th>
+                        <th scope="col">Buy Price</th>
+                        <th scope="col">Sell Price</th>
+                        <th scope="col">Last Price</th>
+                        <th scope="col">Lowest Price</th>
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" class="circle-cell">9k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red" onclick="openMetalPopUp()">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell-palladium">10k Palladium</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red" onclick="openMetalPopUp()">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell-silver">14k Silver</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red" onclick="openMetalPopUp()">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell-platinum">22k Platinum</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="circle-cell">24k Gold</td>
+                        <td>$3,050</td>
+                        <td>$3,050</td>
+                        <td>@$3,050</td>
+                        <td>@$3,050</td>
+                        <td style="justify-content: space-around;">
+                            <button class="load-more-btn2" onclick="openForm()">Edit Metal</button>
+                            <button class="load-more-btn-red">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <br> {% endcomment %}
+
+</section>
+{% endblock %}

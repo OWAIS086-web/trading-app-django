@@ -1,0 +1,260 @@
+@font-face {
+  font-family: "myFont-Regular";
+  src: url("/static/fonts/VisbyCF-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont-Bold";
+  src: url("/static/fonts/VisbyCF-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "myFont-Bold2";
+  src: url("/static/fonts/VisbyCF-BoldOblique.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "myFont-Thin";
+  src: url("/static/fonts/VisbyCF-Thin.otf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "myFont-Light";
+  src: url("/static/fonts/VisbyCF-Light.otf");
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: "myFont-Medium";
+  src: url("/static/fonts/VisbyCF-Medium.otf");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FEFAEA;
+  margin: 0;
+  padding: 0;
+  padding-top: 60px;
+  /* display: flex; */
+  align-items: center;
+  height: 50vh;
+}
+
+.container {
+  display: flex;
+  max-width: 600px;
+  background-color: none;
+  margin-left: 190px;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  /* border-radius: 10px; */
+}
+.back img {
+  height: auto;
+  padding-top: 80px;
+  width: 564px;
+  z-index: -1;
+  margin-left: -1562px;
+}
+
+.left-section {
+  flex: 1;
+  padding: 40px;
+  padding-top: 18px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+  /* justify-content: start; */
+}
+
+.logo img {
+  width: auto;
+  height: 115px;
+  margin-left: -163px;
+}
+
+.oval-button {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+  color: white;
+  font-family: "myFont-Regular";
+}
+
+.google-button {
+  background-color: #ffffff;
+}
+
+.facebook-button {
+  background-color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group h2 {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 10px;
+  text-align: start;
+  font-family: "myFont-Bold";
+}
+
+.form-group p {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  font-family: "myFont-Regular";
+  float: left;
+}
+.form-group .forget-line {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  /* justify-content: center; */
+  margin-bottom: 0px;
+  font-family: "myFont-Regular";
+  /* float: left; */
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border-radius: 27px;
+  border: 1px solid #ccc;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.form-group button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 27px;
+  background: linear-gradient(283deg, #ba7607, #edcc45);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.mm-checkbox {
+  margin-left: -171px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.form-group button:hover {
+  background-color: #ad6706;
+}
+
+.line {
+  text-align: center;
+}
+
+.checkbox a {
+  text-decoration: none;
+  font-size: 12px;
+  color: black;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 9px;
+  justify-content: space-between;
+  /* color: ; */
+}
+
+.checkbox input[type="checkbox"] {
+  background: linear-gradient(283deg, #ba7607, #edcc45);
+  margin-right: 10px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.line {
+  font-size: 12px;
+  text-align: center;
+  padding-left: 90px;
+}
+.form-group a {
+  color: black;
+}
+.right-section {
+  flex: 1;
+  text-align: center;
+  padding: 40px;
+  background-image: url("path-to-your-image.jpg");
+  background-size: cover;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.right-section img {
+  margin-left: 60px;
+}
+
+.social-buttons {
+  text-align: center;
+  padding: 10px;
+}
+
+.social-buttons button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.back-heading {
+  position: absolute;
+  top: 30px;
+  left: 70px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "myFont-Medium";
+}
+
+.form-group a:hover {
+  color: black;
+}

@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="width: 80%; margin: 0 auto;">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="adminTimeFetchingChart"></canvas> 
+    </div>
+   
+
+              <div class="card-body p-2">
+                <canvas id="myLineChart"></canvas>
+              </div>
+            
+        
+           
+              
+         
+
+{% endblock content %}
+{% include 'includes/scripts.html' %}

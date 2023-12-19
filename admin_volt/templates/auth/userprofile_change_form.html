@@ -1,0 +1,21 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n %}
+
+{% block content %}
+  <div class="module">
+    <h2>{% trans "User Profile" %}</h2>
+    
+    <!-- Display user profile fields here -->
+    
+    <h3>{% trans "Received Messages" %}</h3>
+    <ul>
+      {% for message in original.user_profile.received_messages.all %}
+        <li>
+          {% trans "From" %}: {{ message.sender }}
+          {% trans "Content" %}: {{ message.content }}
+          {% trans "Timestamp" %}: {{ message.timestamp }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

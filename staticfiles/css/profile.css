@@ -1,0 +1,325 @@
+body{
+    height: 100vh; /* Adjust to your preference */
+    /* background: #F7E58F; */
+    background-image: linear-gradient(180deg, rgba(247, 229, 143, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.profile-picture {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  /* right: 36%; */
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.profile-picture img {
+  width: 130px;
+  height: 130px;
+  display: block;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 50%;
+}
+a { 
+    color: white;
+    font-size: 10px;
+    font-family: "myFont-Regular";
+  }
+  
+  
+  .black {
+    color: black;
+  }
+  .words {
+    color: black;
+  }
+  a:hover {
+    color: #e1b836;
+    font-weight: 500;
+  }
+  
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 947px;
+  }
+  
+  
+  .linee-2 {
+    margin-left: 40px;
+  }
+  .linee-3 {
+    margin-right: 99px;
+  }
+  
+  .btn-golden {
+    /* background-color: #daa520; */
+    background: linear-gradient(270deg, #ba7607, #edcc45);
+    border-color: #edcc45;
+    width: 75px;
+    color: white;
+    height: 30px;
+    border-radius: 50px;
+    font-family: "myFont-Medium";
+    font-size: 10px;
+  }
+  /* .btn-white-outline {
+    background-color: white;
+    height: 30px;
+    font-size: 10px;
+    color: #171717;
+    font-family: "myFont-Bold";
+    border: 1px solid #eba900;
+    margin-left: -5px;
+    border-radius: 50px;
+    transition: color 0.3s, border-color 0.3s;
+  } */
+  .btn-gold-outline {
+    background-color: white;
+    height: 30px;
+    width: 130px;
+    font-size: 10px;
+    color: #171717;
+    font-family: "myFont-Bold";
+    border: 1px solid #eba900;
+    margin-left: 25px;
+    border-radius: 50px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .outline-btn {
+    background-color: white;
+    height: 30px;
+    font-size: 10px;
+    color: #171717;
+    font-family: "myFont-Bold";
+    text-align: center;
+    padding-top: 8px;
+    border: 1px solid #eba900;
+    margin-top: 15px;
+    margin-left: 0;
+    margin-right: auto;
+    display: block;
+    width: 100px;
+    border-radius: 50px;
+    transition: color 0.3s, border-color 0.3s;
+    /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  }
+  .outline-btn:hover {
+    background: linear-gradient(270deg, #ba7607, #edcc45);
+    color: white;
+  }
+  
+  .outline-btn:active {
+    background: linear-gradient(270deg, #ba7607, #edcc45);
+    color: white;
+  }
+    /* .btn-white-outline {
+      background-color: white;
+      height: 30px;
+      font-size: 10px;
+      color: #171717;
+      font-family: "myFont-Bold";
+      border: 1px solid #eba900;
+      margin-left: 25px;
+      border-radius: 50px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .col-4 {
+    max-width: 33.333333%;
+    flex-basis: 33.333333%;
+    padding-top: 19px;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .user-profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .user-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-details {
+    margin-left: 20px;
+    text-align: left;
+  }
+  
+  .user-name-heading {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: "myFont-Bold";
+    font-size: 25px;
+    padding: 0px;
+  }
+  
+  .username {
+    font-family: "myFont-Medium";
+    color: #001733;
+    font-size: 13px;
+  }
+  .personal-info-section {
+    margin-top: 28px;
+  }
+  
+  .section-heading {
+    font-family: "myFont-Bold";
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+
+  }
+  
+  .sub-heading-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .sub-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .left {
+    margin-left: 37px;
+  }
+  .left-less {
+    margin-right: 37px;
+  }
+  
+  .sub-heading-label {
+    font-family: "myFont-Bold";
+    font-size: 12px;
+  }
+  
+  .sub-heading-value {
+    font-family: "myFont-DemiBold";
+    font-size: 11px;
+    color: #505050;
+  }
+  .custom-card {
+    flex: 0 0 auto;
+    width: auto;
+    margin-top: 40px;
+    border: 1px solid white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .chart-card-heading {
+    display: flex;
+  }
+  .chart-card-heading .dollar-sign {
+    font-family: "myFont-Bold";
+    padding-top: 3px;
+  }
+  .chart-card-heading .main-heading-chart {
+    font-family: "myFont-Bold";
+    padding-top: 8px;
+
+  }
+  .chart-card-heading .heading-percentage {
+    font-family: "myFont-Regular";
+    font-size: 10px;
+    color: #f75151;
+    padding-top: 7px;
+  }
+  .custom-header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding-top: 0px;
+  }
+  .custom-body {
+    /* display: flex;  */
+    /* align-items: end; */
+    justify-content: space-between;
+    /* margin-top: 10px; */
+    /* padding: 9px 10px; */
+    margin-top: 10px;
+    margin-left: 103px;
+    padding: 0px;
+    background-color: white;
+  }
+  
+  .custom-button {
+    border: 1px solid #514c4a;
+    border-radius: 22px;
+    width: 50px;
+    padding: 4px 10px;
+    font-weight: bold;
+    height: 15px;
+    /* text-align: center; */
+    font-size: 6px;
+    font-family: "myFont-DemiBold";
+    background-color: transparent;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .custom-button.active {
+    background: linear-gradient(270deg, #ba7607, #edcc45);
+    color: white;
+    border: none;
+  }
+  .main-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-section button {
+    border: 1px solid #edcc45;
+    border-radius: 22px;
+    width: 70px;
+    padding: 4px 10px;
+    /* font-weight: bold; */
+    height: 30px;
+    /* text-align: center; */
+    font-size: 12px;
+    font-family: "myFont-Regular";
+    background: linear-gradient(270deg, #ba7607, #edcc45);
+    color: white;
+  
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .main-section h1 {
+    font-family: "myFont-DemiBold";
+    font-size: 50px;
+  }
+  .strategy-section {
+    padding: 20px 0px;
+    text-align: left;
+
+  }
+  .strategy-section h1 {
+    font-family: "myFont-Bold";
+    font-size: 24px;
+  }
+  .strategy-section p {
+    font-family: "myFont-DemiBold";
+    font-size: 11px;
+    color: #505050;
+  }
+  

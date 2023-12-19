@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %}>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Pop-up Form</title>
+    <style>
+        /* CSS styling for the form */
+        .popup-form {
+            width: 450px;
+            padding: 20px;
+            border: 1px solid rgb(204, 202, 202);
+            border-radius: 20px;
+            background-color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            padding: 30px 60px;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            max-width: 300px;
+            margin: 20px;
+        }
+
+        /* .form-label {
+            width: 120px;
+            text-align: right;
+            padding-right: 10px;
+        } */
+
+        .form-field {
+            width: 160px;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 27px;
+            background: linear-gradient(283deg, #ba7607, #edcc45);
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .form-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            /* background: linear-gradient(283deg, #ba7607, #edcc45); */
+            /* color: linear-gradient(283deg, #ba7607, #edcc45);; */
+            background: linear-gradient(99deg, #fde966, #fde966, #cf9102, #8c3c10);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            /* border: 2px solid; */
+        }
+
+        .close-icon img {
+            height: 20px;
+            width: 40px;
+        }
+
+        .custom-date-input::-webkit-calendar-picker-indicator {
+            background: url("") no-repeat;
+            color: black;
+            background-size: contain;
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            cursor: pointer;
+            /* padding-top: 20px; */
+        }
+
+        .custom-date-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 27px;
+            border: 1px solid #E5E5E5;
+            background-color: white;
+            margin-bottom: 0px;
+            color: #667080;
+            font-family: "myFont-Medium";
+            font-size: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="popup-form">
+        <span class="close-icon" onclick="closeForm()"><img src={% static 'img/icon-cancel.svg'%} alt=""></span>
+
+        <form>
+            <div>
+                <h1 class="form-heading">Add Metal</h1>
+            </div>
+            <div class="form-row">
+                <label class="add-form-label" for="monster-box">Monster Box</label>
+                <select id="monster-box" class="add-form">
+                    <option value="gold">Gold</option>
+                    <option value="silver">Silver</option>
+                    <option value="platinum">Platinum</option>
+                    <option value="palladium">Palladium</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label class="add-form-label" for="metal-type">Metal Type</label>
+                <select id="metal-type" class="add-form">
+                    <option value="14k">14k</option>
+                    <option value="19k">19k</option>
+                    <option value="22k">22k</option>
+                    <option value="24k">24k</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label class="add-form-label" for="metal-grade">Metal Grade</label>
+                <select id="metal-grade" class="add-form">
+                    <option value="14k">14k</option>
+                    <option value="19k">19k</option>
+                    <option value="22k">22k</option>
+                    <option value="24k">24k</option>
+                </select>
+            </div>
+            <div class="form-row-label">
+                <label class="add-form-label" for="total-quantity">Total Quantity</label>
+                <label class="add-form-label2" for="ounce">Ounce</label>
+            </div>
+            <div class="form-row2">
+                <input type="text" id="total-quantity" class="add-form2" placeholder="45">
+                <input type="text" id="ounce" class="add-form2" placeholder="ounce">
+            </div>
+
+
+            <div class="form-row">
+                <label class="add-form-label" for="acquisition-cost">Acquisition Cost</label>
+                <input type="text" id="acquisition-cost" class="add-form" placeholder="$2,905">
+            </div>
+
+            <div class="form-row">
+                <label class="add-form-label" for="purchase-date">Purchase Date</label>
+                <input type="date" id="dateInput" class="custom-date-input" value="MM/DD/YYYY">
+                <span><img src={% static 'img/path-4397.svg'%} alt="" class="arrow-down-img"></span>
+            </div>
+
+            <div class="form-button">
+                <button type="submit" class="signup-button">Save & Continue</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        function closeForm() {
+            document.querySelector('.popup-form').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

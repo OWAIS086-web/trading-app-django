@@ -1,0 +1,48 @@
+{% extends 'base_basic.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+
+{% block body-content %}
+<div class="popup-form" id="popupForm">
+    <span class="close-icon" onclick="closeForm()"><img src="{% static 'img/icon-cancel.svg' %}" alt=""></span>
+    <form method="POST" action="{% url 'portfolio:add_portfolio'%}">               
+        {% csrf_token %}
+        <div>
+            <h1 class="form-heading">Add Metal</h1>
+        </div>
+        <div class="two-dropdowns">
+            {% bootstrap_field form.metal form_group_class='form-group' %}
+            <img class="angles-down-img" src="{% static './img/angles-down.png' %}" >
+            {% bootstrap_field form.grade form_group_class='form-group' %}
+            <img class="angles-down-grade" src="{% static './img/angles-down.png' %}" >
+        </div>
+        {% comment %} <div class="form-group"><label class="form-label" for="id_product_family">Product Family</label><select name="product_family" class="form-select form-control" title="" required="" id="id_product_family">
+          <option value="" selected="">---------</option>
+        </select></div> {% endcomment %}
+        
+        {% bootstrap_field form.product_family form_group_class='form-group' %}
+        <img class="angles-down-family" src="{% static './img/angles-down.png' %}" >
+        {% bootstrap_field form.product form_group_class='form-group' %}
+        <img class="angles-down-product" src="{% static './img/angles-down.png' %}" >
+<div class="ounces-dropdown">
+        {% bootstrap_field form.ounces form_group_class='form-group' %}
+        {% bootstrap_field form.metal_quantity form_group_class='form-group' %}
+</div>
+<div class="ounces-dropdown">
+        {% bootstrap_field form.acquisition_cost form_group_class='form-group' %}        
+        {% bootstrap_field form.purchase_date form_group_class='form-group' %}
+        <input type="hidden" name="factor_rate" value="0" id="id_factor_rate">
+        <input type="hidden" name="ask" value="0" id="id_ask">
+        {% comment %} <img class="angles-down-date" src="{% static './img/angles-down.png' %}" > {% endcomment %}
+</div>
+        <div class="form-button">
+            <button type="submit" class="metals-button">Save & Continue</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

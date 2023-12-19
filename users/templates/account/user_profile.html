@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href={% static 'css/profile.css' %}>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+{% endblock %}
+
+{% block banner-content %} {% endblock %}
+
+{% block body-content %}
+<br>
+<br>
+<br>
+<div class="container main-section">
+
+    <h1>Profile</h1>
+    <a href="{% url 'users:edit_profile' %}"><button>Edit</button></a>
+
+</div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-4">
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <!--<h2>Test Text</h2>-->
+
+                    {% if user_media_instance %}
+                        {% if user_media_instance.media_file %}
+<img src="{{ user_media_instance.media_file.url }}" alt="media file error">
+                        {% comment %} <h2 class="user-name-heading">{{ user_media_instance.file_type.field_name }}</h2>
+                        <h2 class="user-name-heading">{{ user_media_instance.get_file_type_display }}</h2> {% endcomment %}
+                        {% endif %}
+                    {% endif %}
+                    {% comment %} <img src="{{ media_form.media_file.url }}" alt="media file error"> {% endcomment %}
+                    {% comment %} user.user_profile.profile_pic.url  user.updated_media_files.{% endcomment %}
+
+                    {% comment %} <h2 class="user-name-heading">{{ media_form.media_file.value }}</h2> {% endcomment %}
+                </div>
+                <div class="profile-details">
+                    {% comment %} <h2 class="user-name-heading">{{ media_form.media_file.value }}</h2>
+                    <h2 class="user-name-heading">{{ user_media_instance.get_file_type_display}}</h2>
+                    <h2 class="user-name-heading">{{ user_media_instance.updated_on|date:"D, M d, Y" }}</h2>
+                    <h2 class="user-name-heading">{{ media_form.file_type.value }}</h2>
+                    <h2 class="user-name-heading">{{ user_media_instance.get_description_display }}</h2>
+                    <h2 class="user-name-heading">{{ user_media_instance.get_is_active_display }}</h2> {% endcomment %}
+                    <h2 class="user-name-heading">{{ profile_form.display_name.value }}</h2>
+                    {% comment %} <p class="username">Lorem ipsum dolor sit</p> {% endcomment %}
+                </div>
+            </div>
+            <div class="personal-info-section">
+                <h3 class="section-heading">Personal Information</h3>
+                <div class="sub-heading-row">
+                    <div class="sub-heading">
+                        <p class="sub-heading-label">Name</p>
+                        <p class="sub-heading-value">{{ user_form.username.value }} </p>
+                    </div>
+                    <div class="sub-heading">
+                        <p class="sub-heading-label left">Phone Number</p>
+                        <p class="sub-heading-value left">{{ profile_form.telephone.value }}</p>
+                    </div>
+                </div>
+                <div class="sub-heading-row">
+                    <div class="sub-heading">
+                        <p class="sub-heading-label">Email</p>
+                        <p class="sub-heading-value">{{ user_form.email.value }}</p>
+                    </div>
+                    <div class="sub-heading">
+                        <p class="sub-heading-label left">Address</p>
+                        <p class="sub-heading-value left">{{ profile_form.street.value }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="col">
+                <div class="card custom-card bottom">
+                    <div class="card-header custom-header">
+                        <div class="chart-card-heading">
+                            <div class="graph-amount-heading">
+                                 <p class="dollar-sign">$</p>
+                            <h2 class="main-heading-chart">34.789,75</h2>
+                            <p class="heading-percentage">-10,68%</p>
+                            </div>
+                            <div class="card-body custom-body">
+                                <button class="custom-button">Day</button>
+                                <button class="custom-button">Week</button>
+                                <button class="custom-button active">Month</button>
+                                <button class="custom-button">Year</button>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="area-chart" class="custom-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="strategy-section">
+        <h1>Strategy</h1>
+        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et
+            Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip
+            Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu
+            Fugiat Nulla Pariatur. Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In Culpa Qui Officia
+            Deserunt Mollit Anim Id Est Laborum. </p>
+        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et
+            Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip
+            Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu
+            Fugiat Nulla Pariatur. Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In Culpa Qui Officia
+            Deserunt Mollit Anim Id Est Laborum. Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do
+            Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud
+            Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In
+            Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat
+            Cupidatat Non Proident, Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum. </p>
+            <br>
+            <br>
+        </div>
+</div>
+
+    <script>
+        const chartCanvas = document.getElementById('area-chart');
+        // Set the chart data
+        const chartData = {
+            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'],
+            datasets: [{
+                label: 'Data',
+                data: [10, 15, 7, 12, 9, 14],
+                borderColor: 'rgba(225, 184, 54, 1)', // Golden color
+                borderWidth: 2,
+                fill: 'start', // Fill the area below the line
+                pointBackgroundColor: 'rgba(225, 184, 54, 1)', // Golden color
+                pointHoverRadius: 5, // Set the hover radius for the data points
+                pointStyle: 'circle', // Set the point style to circle
+                showLine: true, // Show the line
+                backgroundColor: (context) => {
+                    const bgColor = ['rgba(186, 118, 7, 0.4)', 'rgba(255, 255, 255, 0.4)'];
+                    if (!context.chart.chartArea) {
+                        return;
+                    }
+                    const { ctx, data, chartArea: { top, bottom } } = context.chart;
+                    const gradientBg = ctx.createLinearGradient(0, top, 0, bottom);
+                    const colorTranches = 1 / (bgColor.length - 1);
+                    for (let i = 0; i < bgColor.length; i++) {
+                        gradientBg.addColorStop(i * colorTranches, bgColor[i]);
+                    }
+                    return gradientBg;
+                },
+            }]
+        };
+        const titleTooltip = (tooltipItems) => {
+            return '000';
+        }
+        // Set the chart options
+        const chartOptions = {
+            value: [10, 12, 14, 16, 18, 20],
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            weight: 'bold',
+                            size: 10,
+                            color: 'black'
+                        },
+                        stepSize: 3,
+                        callback: function (value, index, values) {
+                            return (values.length - index) * 2 + 8; // Calculate the desired value based on the index
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            weight: 'bold',
+                            size: 8,
+                            color: 'black'
+                        }
+                    }
+                }
+            },
+            elements: {
+                line: {
+                    tension: 0.4,
+                    borderWidth: 1,
+                    borderColor: 'rgba(225, 184, 54, 1)'
+                },
+                point: {
+                    backgroundColor: 'rgba(225, 184, 54, 1)',
+                    hoverRadius: 5,
+                    radius: 5,
+                    pointStyle: 'circle'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    yAlign: 'bottom',
+                    backgroundColor: '#D9A518',
+                    displayColors: false,
+                    callbacks: {
+                        title: function () {
+                            return '';
+                        },
+                        label: function (context) {
+                            const dataPoint = context.parsed.y;
+                            const month = chartData.labels[context.dataIndex];
+                            return `${dataPoint}`;
+                        }
+                    }
+                },
+            },
+            chartArea: {
+                backgroundColor: {
+                    type: 'linear',
+                    colorStops: [{
+                        offset: 0,
+                        color: '#BA7607' // Start color
+                    }, {
+                        offset: 1,
+                        color: '#EDCC45' // End color
+                    }],
+                    angle: 270 // Gradient angle
+                }
+            }
+        };
+        // Set the background color of the chart container
+        chartCanvas.style.backgroundColor = 'transparent'; // Or any desired color
+        // Create the area chart
+        new Chart(chartCanvas, {
+            type: 'line',
+            data: chartData,
+            options: chartOptions
+        });
+    </script>
+
+
+    <script>
+    const buttons = document.querySelectorAll('.custom-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove the active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // Add the active class to the clicked button
+            button.classList.add('active');
+        });
+    });
+</script>
+
+{% endblock %}

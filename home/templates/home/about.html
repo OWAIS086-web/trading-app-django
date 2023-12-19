@@ -1,0 +1,1550 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+    
+{% block content %}
+<style>
+    /* header CSS */
+
+    .header {
+        background-color: #fff;
+        box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+        position: fixed;
+        width: 100%;
+        z-index: 50;
+
+    }
+
+    .header ul.components li a {
+        display: block;
+        padding: 20px 20px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .header ul.components li a:hover,
+    .header .menu-btn:hover {
+        background-color: #f4f4f4;
+        border-right: 2px solid blue;
+
+    }
+
+    .header .logo {
+        display: block;
+        float: left;
+        font-size: 2em;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+    .header .logo img {
+        max-width: 40%;
+    }
+
+    /* menu */
+
+    .header .menu {
+        clear: both;
+        max-height: 0;
+        transition: max-height .2s ease-out;
+    }
+
+    /* menu icon */
+
+    .header .menu-icon {
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+    }
+
+    .header .menu-icon .navicon {
+        background: red;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background .2s ease-out;
+        width: 18px;
+    }
+
+    .header .menu-icon .navicon:before,
+    .header .menu-icon .navicon:after {
+        background: red;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+
+    .header .menu-icon .navicon:before {
+        top: 5px;
+    }
+
+    .header .menu-icon .navicon:after {
+        top: -5px;
+    }
+
+    /* menu btn */
+
+    .header .menu-btn {
+        display: none;
+    }
+
+    .header .menu-btn:checked~.menu {
+        max-height: 240px;
+    }
+
+    .header .menu-btn:checked~.menu-icon .navicon {
+        background: transparent;
+    }
+
+    .header .menu-btn:checked~.menu-icon .navicon:before {
+        transform: rotate(-45deg);
+    }
+
+    .header .menu-btn:checked~.menu-icon .navicon:after {
+        transform: rotate(45deg);
+    }
+
+    .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+    .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+        top: 0;
+    }
+
+    /* 48em = 768px */
+
+    @media (min-width: 48em) {
+        .header li {
+            float: left;
+        }
+
+        .header li a {
+            padding: 20px 30px;
+        }
+
+        .header .menu {
+            clear: none;
+            float: right;
+            max-height: none;
+        }
+
+        .header .menu-icon {
+            display: none;
+        }
+    }
+
+    header.header {
+        display: none;
+    }
+
+    @media only screen and (max-width: 767px) {
+        header.header {
+            display: block;
+        }
+    }
+
+    .wrapper {
+        max-width: 50%;
+        background: #fff;
+        position: fixed;
+        z-index: 22;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .header ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: transparent;
+    }
+
+    /* width */
+    .wrapper::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    /* Track */
+    .wrapper::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .wrapper::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .wrapper::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+    }
+
+    .menu {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        padding: 0;
+    }
+
+    button.navbar-toggler.opened {
+        margin-left: 45%;
+        background: #fff;
+    }
+
+    .line {
+        fill: none;
+        stroke: black;
+        stroke-width: 4;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line1 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+    .line2 {
+        stroke-dasharray: 60 60;
+        stroke-width: 6;
+    }
+
+    .line3 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+    .opened .line1 {
+        stroke-dasharray: 90 207;
+        stroke-dashoffset: -134;
+        stroke-width: 6;
+    }
+
+    .opened .line2 {
+        stroke-dasharray: 1 60;
+        stroke-dashoffset: -30;
+        stroke-width: 6;
+    }
+
+    .opened .line3 {
+        stroke-dasharray: 90 207;
+        stroke-dashoffset: -134;
+        stroke-width: 6;
+    }
+</style>
+<header class="header">
+
+    <div class="collapse" id="navbarToggleExternalContent">
+
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <a href="https://jamalbrothers.com.pk/">
+                        <img class="w-100 p-3" src="img/JB-logo-bk.png" alt="Jamal Brothers">
+
+                    </a>
+                </div>
+
+                <ul class=" components">
+                    <li class="active">
+                        <a href="#our-comany" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Our
+                            Company</a>
+                        <ul class="collapse " id="our-comany">
+                            <li> <a href="./about-us">About us</a> </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#service-menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Services</a>
+                        <ul class="collapse " id="service-menu">
+                            <li>
+                                <a href="./payroll-outsourcing-service">Payroll Outsourcing </a>
+                            </li>
+                            <li> <a href="./manpower-outsourcing-recruitment-service"> Manpower Outsourcing & Recruitment
+
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="./business-process-outsourcing-service"> Business Process Outsourcing
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="./call-center-service"> Call Center
+                                </a>
+                            </li>
+
+                            <li> <a href="./employee-training-development-service"> Employee Training & Development
+
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#digital-menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Digital</a>
+                        <ul class="collapse " id="digital-menu">
+                            <li>
+                                <a href="./digital-marketing-service"> Digital Marketing
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./web-development-service"> Web Development
+                                </a>
+                            </li>
+                            <li> <a href="./mobile-app-development-service"> Mobile App Development
+
+                                </a>
+                            </li>
+
+
+                            <li> <a href="./search-engine-optimization-service"> Search Engine Optimization
+
+                                </a>
+                            </li>
+
+
+
+                            <li> <a href="./quality-assurance-service"> Quality Assurance
+
+                                </a>
+                            </li>
+
+                            <li> <a href="./data-science"> Data Science
+
+                                </a>
+                            </li>
+                            <li> <a href="./it-service">IT Service
+
+                                </a>
+                            </li>
+
+
+
+
+                        </ul>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="#product-menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Products</a>
+                        <ul class="collapse " id="product-menu">
+
+                            <li class="">
+                                <a href="./enterprise-resource-planning"> Enterprise Resource Planning 
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="./customer-relationship-management"> Customer Relationship Management
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="./human-resource-management-system">Human Resource Management System
+                                </a>
+                            </li>
+                            <li> <a href="./payroll-management-system">Payroll Management System
+
+                                </a>
+                            </li>
+
+                            <li> <a href="./inventory-management-system"> Inventory Management System
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./point-of-sale">Point of Sale
+                                </a>
+                            </li>
+
+                            <li> <a href="./it-help-desk">It Help Desk
+
+                                </a>
+                            </li>
+
+
+
+
+
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="./contact-us">Contact Us</a>
+                    </li>
+                     <li>
+                        <a href="./blog">Blog</a>
+                    </li>
+                    <li>
+                        <a href="./careers">Careers</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="col-md-3 mx-auto text-center">
+
+                <!-- Links -->
+                <h5 class="  mt-3 mb-4 ">Follow Us</h5>
+
+                <ul class="d-flex footer-icon text-center ml-1" style="list-style: none; padding:0px">
+                    <li class="p-2 fw-light facebook-h"><a href="https://www.facebook.com/JamalBrothersPvtLtd">
+                            <i class="fab fa-facebook-f"></i></a></li>
+                    <li class="p-2 fw-light twitter-h"><a href="https://twitter.com/jamal_brothers">
+                            <i class="fab fa-twitter"></i></a></li>
+                    <li class="p-2 fw-light linkedin-h"><a href="https://www.linkedin.com/company/JamalBrothersPvtLtd">
+                            <i class="fab fa-linkedin-in"></i></a></li>
+                    <!-- <li class="p-2 fw-light instagram-h"><a href="https://www.instagram.com/">
+                            <i class="fab fa-instagram"></i></a></li> -->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-dark ">
+
+        <div class="container-fluid">
+            <a href="https://jamalbrothers.com.pk/">
+                <img style="width:40px" src="./img/icon/fevicon.svg" alt="Jamal Brothers"></a>
+
+            <button onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened')); mak()" aria-label="Main Menu" style="z-index: 100;" class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="line line2" d="M 20,50 H 80" />
+                    <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                </svg>
+
+            </button>
+
+
+    </nav>
+</header>
+
+
+
+<script>
+    function mak() {
+        let a = document.querySelector('body >  header.header > .collapse#navbarToggleExternalContent');
+        if (a.style.display === 'block') {
+            a.style.display = 'none';
+        } else {
+            a.style.display = 'block';
+        }
+    }
+</script>
+<div class="container">
+
+    <header class="mainHeader ">
+
+        <div class="row ">
+
+            <div class=" col-xl-2 col-md-2 col-sm-2 logo">
+                <span>
+                    <a href="https://jamalbrothers.com.pk/">
+                        <img class="btMainLogo" src="img/JB-logo-wh.png" alt="Jamal Brothers">
+
+                    </a>
+                </span>
+            </div>
+
+
+            <div class="col-md-8 col-sm-12 menuPort">
+                <nav>
+                    <ul id="menu-main-menu" class="menu">
+
+                        <li class=" menu-item-has-children "> <a>Our Company</a>
+                            <ul class="sub-menu">
+                                <li> <a href="./about-us">About us</a> </li>
+
+                            </ul>
+                        </li>
+                        <li class=" menu-item-has-children">
+                            <a href="#">Services</a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="./payroll-outsourcing-service">Payroll Outsourcing </a>
+                                </li>
+                                <li> <a href="./manpower-outsourcing-recruitment-service"> Manpower Outsourcing &
+                                        Recruitment
+
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="./business-process-outsourcing-service"> Business Process Outsourcing
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="./call-center-service"> Call Center
+                                    </a>
+                                </li>
+
+                                <li> <a href="./employee-training-development-service"> Employee Training & Development
+
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+
+                        <li class=" menu-item-has-children">
+                            <a href="">Digital </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="./digital-marketing-service"> Digital Marketing
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./web-development-service"> Web Development
+                                    </a>
+                                </li>
+
+                                <li> <a href="./mobile-app-development-service"> Mobile App Development
+
+                                    </a>
+                                </li>
+
+
+                                <li> <a href="./search-engine-optimization-service"> Search Engine Optimization
+
+                                    </a>
+                                </li>
+
+
+
+                                <li> <a href="./quality-assurance-service"> Quality Assurance
+
+                                    </a>
+                                </li>
+
+
+                                <li> <a href="./data-science"> Data Science
+
+                                    </a>
+                                </li>
+                                <li> <a href="./it-service">IT Service
+
+                                    </a>
+                                </li>
+
+
+
+
+
+
+
+
+                            </ul>
+                        </li>
+                        <li class=" menu-item-has-children "> <a>Products</a>
+                            <ul class="sub-menu">
+
+                                <li class="">
+                                    <a href="./enterprise-resource-planning"> Enterprise Resource Planning
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="./customer-relationship-management"> Customer Relationship Management
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="./human-resource-management-system">Human Resource Management System
+                                    </a>
+                                </li>
+                                <li> <a href="./payroll-management-system">Payroll Management System
+
+                                    </a>
+                                </li>
+
+
+
+
+
+
+                                <li> <a href="./inventory-management-system"> Inventory Management System
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./point-of-sale">Point of Sale
+                                    </a>
+                                </li>
+
+
+                                <li> <a href="it-help-desk">It Help Desk
+
+                                    </a>
+                                </li>
+
+
+
+
+
+
+
+                            </ul>
+                        </li>
+                        <li class=" menu-item-has-children">
+                            <a href="./contact-us">Contact Us</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="blog">Blog</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="careers">Careers</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="col-2 align-self-center">
+                <ul class="d-flex align header-icon" style="list-style: none;">
+                    <li class="p-2 fw-light facebook-header">
+                        <a href="https://www.facebook.com/JamalBrothersPvtLtd" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="p-2 fw-light twitter-hheader">
+                        <a href="https://twitter.com/jamal_brothers" target="_blank"> <i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="p-2 fw-light linkedin-header">
+                        <a href="https://www.linkedin.com/company/JamalBrothersPvtLtd" target="_blank"> <i
+                                class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <!-- <li class="p-2 fw-light instagram-header">
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+
+    </header>
+
+</div>
+    <!-- /.mainHeader -->
+    <section class="section-1">
+        <div class="banner-bg inner-bg"
+            style="background:linear-gradient( 
+0deg, rgba(0, 0, 0, 0.446), rgba(0, 0, 0, 0.508) ),url(./img/about-us/About-Us.webp);  background-repeat: no-repeat;background-size: cover; ">
+
+            <div class="row justify-content-center text-center">
+
+                <div class="col-xl-5 col-md-8 col-sm-12 align-self-center">
+                    <div data-aos="fade-left" class="inner-first-heading" style="text-align: -webkit-center;">
+                        <h1>
+                            Our Founder
+                        </h1>
+                        <hr class="solid">
+                        <div class="subheadline subheadline-first">
+                            Business & Commercial Application Development & Operations Expert with extensive experience
+                            of over 15 years in IT – Business & Commercial Systems. He owns significant accomplishments
+                            for understanding clients’ requirements, setting strategic direction, implementing effective
+                            software solutions. Additionally, he has served in telecommunication, where he conducted
+                            deep competitive analysis and monitored progress.</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+    <section class="section-4 mt-5 mb-5">
+        <div class="container">
+
+            <div class="mt-4 ">
+                <div class="row justify-content-center ">
+
+                    <h3 data-aos="fade-up" class="headline_content text-center mb-5">Core Expertise</h3>
+                    <p data-aos="fade-down" class="subheadline text-center w-75 mb-4">
+                        Building and managing strategically advanced IT solutions, IT project life-cycle and
+                        implementation of the system
+                    </p>
+
+                </div>
+                <div class="row justify-content-center" style="text-align: -webkit-center;">
+                    <div data-aos="fade-right" class="col-xl-3 col-md-6 col-sm-12 mt-3">
+                        <div class="mb-4 text-left">
+                            <img class="w-25 " src="./img/about-us/launch.png" class="card-img-top"
+                                alt="Outsourcing Solutions">
+                            <div class="card-body text-left">
+                                <h4 class="font-weight-bold">Defines and launches new products and features</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" class="col-xl-3 col-md-6 col-sm-12 mt-3">
+                        <div class="mb-4 text-left">
+                            <img class="w-25 " src="./img/about-us/costs and time.png" class="card-img-top"
+                                alt="Outsourcing Solutions">
+                            <div class="card-body text-left">
+                                <h4 class="font-weight-bold">Requirement identification with costs and time for
+                                    implementation </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-down" class="col-xl-3 col-md-6 col-sm-12 mt-3">
+                        <div class="mb-4 text-left">
+                            <img class="w-25 " src="./img/about-us/team.png" class="card-img-top"
+                                alt="Outsourcing Solutions">
+                            <div class="card-body text-left">
+                                <h4 class="font-weight-bold">Supports product management teams as well as
+                                    cross-functional teams</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" class="col-xl-3 col-md-6 col-sm-12 mt-3">
+                        <div class="mb-4 text-left">
+                            <img class="w-25 " src="./img/about-us/partnership.png" class="card-img-top"
+                                alt="Outsourcing Solutions">
+                            <div class="card-body text-left">
+                                <h4 class="font-weight-bold">Drives strong partnerships with technology vendors </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="section-8">
+        <div class="container">
+
+            <div class="mt-4 mb-4">
+
+                <div class="row justify-content-around">
+
+                    <div data-aos="fade-right" class="col-xl-6 col-md-12 col-for-mid">
+                        <div class="second-heading">
+                            <h3 data-aos="fade-up" class="headline_content">
+                                Business Objectives
+                            </h3>
+                            <p data-aos="fade-down" class="headline_subheadline">
+                                The company applies frameworks to significantly deliver projects with solutions and
+                                products that meet business needs. Jamal brothers are the first of a new generation
+                                consultation, business process, sales, and information technology outsourcing company
+                                when it comes to digital enablement with design, innovation, and quality
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div data-aos="fade-left" class="col-xl-6 col-md-8 ">
+                        <div class="object1">
+                            <img src="./img/icon/img-floater-1.png" alt="Outsourcing Solutions">
+                        </div>
+                        <div class="right-img">
+                            <img src="./img/about-us/Business-Objectives.png" alt="Outsourcing Solutions">
+                        </div>
+                        <div class="object2">
+                            <img src="./img/icon/img-floater-1.png" alt="Outsourcing Solutions">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-3 mt-5 "
+        style="background-image:url(./img/about-us/We-Help-You.webp);background-repeat: no-repeat; height: auto;background-size: cover;">
+
+        <div class="container">
+            <div class="industries">
+                <div class="row justify-content-center ">
+                    <div class="col-xl-7 col-md-9 col-sm-12 align-self-center mt-5 mb-5">
+
+                        <h3 data-aos="fade-up" class="headline_content text-center text-white mb-3">How Can We Help You?
+                        </h3>
+                        <p data-aos="fade-down" class="subheadline text-center mb-4 text-white">
+                            The team consists of designers, developers, marketing managers, and tech support teams to
+                            oversee the projects of mobile app development, and broad scope programming projects, and
+                            digital marketing. Moreover, we help businesses become competitive with the power of digital
+                            innovation, outstanding design, and emerging technologies via building intelligent app.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <style>
+    /* .icon-flip  */
+    .footer-copyright {
+        background-color: #000;
+
+    }
+
+    /* @import "./responsive.css"; */
+    @media only screen and (max-width: 600px) {
+
+        .footer-copyright.text-white.pt-4.pb-3 {
+            text-align-last: center;
+            
+        }
+        .col-xl-8.col-md-8.col-sm-12.fev-pera {
+    text-align: center;
+}
+
+        .fev-pera {
+            display: block !important;
+        }
+    }
+
+
+    .fev-pera {
+        display: flex;
+        text-align: left;
+    }
+
+
+    .flip-card {
+        background-color: transparent;
+
+        perspective: 1000px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* ./icon-flip  */
+
+
+    .footer-icon li {
+        /* background: 3b5998; */
+        border-radius: 100%;
+        margin-right: 10px;
+        width: 40px;
+        height: auto;
+        text-align-last: center;
+    }
+
+    li.p-2.fw-light.facebook-h {
+        background: #3b5998;
+    }
+
+    li.p-2.fw-light.twitter-h {
+        background: #00acee;
+    }
+
+    li.p-2.fw-light.linkedin-h {
+        background: #0e76a8;
+    }
+
+    li.p-2.fw-light.instagram-h {
+        background: #f09433;
+        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    }
+
+    .footer-list-icon {
+        margin-top: -30px;
+
+    }
+
+    .footer-list-icon ul li a {
+        color: #fff;
+
+    }
+
+    .footer-list-icon ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-list-icon ul {
+        color: #fff;
+        display: inline;
+    }
+
+    ul.footer-icon {
+        margin-left: -15px;
+    }
+
+
+    .footer-icon svg {
+        color: #fff;
+    }
+
+    .footer-icon li:hover a svg {
+        color: #fff;
+    }
+
+    .map-container {
+        overflow: hidden;
+        position: relative;
+        height: 0;
+    }
+
+    .map-container iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+</style>
+
+
+<!-- Footer -->
+<footer style=" box-shadow: 0 3px 20px rgb(0 0 0 / 0.5); background:#0b77c1" class="page-footer font-small indigo pt-4">
+
+    <!-- Footer Links -->
+    <div class="container  text-white text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-xl-3 col-md-3 col-sm-6 mx-auto">
+
+                <!-- Links -->
+                <hr class="solid" style="display: inline-flex;margin-bottom: -8px;">
+                <h5 class=" mt-3 mb-4">About</h5>
+
+                <p data-aos="fade-down" class="headline_subheadline text-white">Jamal Brothers (Pvt.) Limited was founded in 2016 to empower start-ups and small-medium enterprises with software solutions, brand-building service, and call center support. </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+            <!-- Grid column -->
+            <div class="col-xl-3 col-md-3 col-sm-6 mx-auto">
+
+                <!-- Links -->
+                <hr class="solid" style="display: inline-flex;margin-bottom: -8px;">
+                <h5 class="font-weight-bold  mt-3 mb-4">Quick Links</h5>
+
+                <ul class="" style="list-style: none; padding:0px">
+                    <li data-aos="fade-down">
+                        <a href="./business-process-outsourcing-service" class="text-white"> Business Process Outsourcing</a>
+                    </li>
+                    <li data-aos="fade-down">
+                        <a href="./enterprise-resource-planning" class="text-white"> Enterprise Resource Planning&nbsp;
+                        </a>
+                    </li>
+
+                    <li data-aos="fade-down">
+                        <a href="./mobile-app-development-service" class="text-white"> Mobile App Development
+
+                        </a>
+                    </li>
+
+
+                    <li data-aos="fade-down">
+                        <a href="/contact-us" class="text-white">Contact Us</a>
+                    </li>
+
+
+                    <li data-aos="fade-down">
+                        <a href="/about-us" class="text-white">About Us</a>
+                    </li>
+                    <li data-aos="fade-down">
+                        <a href="./faqs" class="text-white">FAQs</a>
+                    </li>
+                    <li data-aos="fade-down">
+                        <a class="text-white">Blog</a>
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- <hr class="clearfix w-100 d-md-none"> -->
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+                <hr class="solid" style="display: inline-flex;margin-bottom: -8px;">
+                <h5 class="font-weight-bold  mt-3 mb-4">Find Out More</h5>
+
+                <section class="mb-4">
+
+
+
+                    <!-- Google Maps -->
+                    <div id="full-width-map" class="z-depth-1-half map-container" style="height: 150px">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.0242840478522!2d67.07509201500363!3d24.89715328403652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6415a8abbdced464!2sJAMAL%20BROTHERS%20(PRIVATE)%20LIMITED!5e0!3m2!1sen!2s!4v1635765225958!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <!-- Google Maps -->
+
+                </section>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+
+                <!-- Links -->
+                <hr class="solid" style="display: inline-flex;margin-bottom: -8px;">
+                <h5 class="  mt-3 mb-4">Follow Us</h5>
+
+                <ul class="d-flex footer-icon text-left" style="list-style: none; padding:0px">
+                    <li data-aos="fade-down" class="p-2 text-center fw-light facebook-h"><a href="https://www.facebook.com/JamalBrothersPvtLtd" target="_blank">
+                            <i class="fab fa-facebook-f"></i></a></li>
+                    <li data-aos="fade-down" class="p-2 text-center fw-light twitter-h"><a href="https://twitter.com/jamal_brothers" target="_blank">
+                            <i class="fab fa-twitter"></i></a></li>
+                    <li data-aos="fade-down" class="p-2 text-center fw-light linkedin-h"><a href="https://www.linkedin.com/company/JamalBrothersPvtLtd" target="_blank">
+                            <i class="fab fa-linkedin-in"></i></a></li>
+                    <!-- <li data-aos="fade-down" class="p-2 fw-light instagram-h"><a href="https://www.instagram.com/">
+                            <i class="fab fa-instagram"></i></a></li> -->
+                </ul>
+                <div class="footer-list-icon">
+                    <ul style="list-style: none; " class="">
+                        <li data-aos="fade-down" class="flip-card"><a href="tel:03002015539"><i class="flip-card-inner mr-2 fas fa-phone-alt"></i>0300-2015539</a></li>
+                        <li data-aos="fade-down" class="flip-card"><a href="mailto:contact@jamalbrothers.com.pk"><i class="flip-card-inner mr-2 fas fa-envelope"></i>contact@jamalbrothers.com.pk</a></li>
+                        <li data-aos="fade-down" class="flip-card"><a href="https://jamalbrothers.com.pk/"><i class="flip-card-inner mr-2 fas fa-globe"></i>www.jamalbrothers.com.pk</a></li>
+                        <!-- <li data-aos="fade-down"><i class="far fa-square"></i>in lists</li> -->
+                    </ul>
+                </div>
+
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <!-- <div class="footer-copyright text-center text-white bg-dark py-3">© 2021 Copyright:
+        <a class="text-white" href="index.html">jamalbrothers.com.pk</a>
+    </div> -->
+
+
+    <div class="footer-copyright text-white pt-4 pb-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-md-8 col-sm-12 fev-pera">
+                    <img style="height:40px" class="mr-2 mb-2" src="./img/icon/fevicon.svg" alt="Jamal Brothers">
+                    <p>
+                        Jamal Brothers (Pvt.) Limited | All Rights Reserved | Copyrights 2016-21 <br><a class="text-white" href="https://jamalbrothers.com.pk/"> www.jamalbrothers.com.pk</a> #JamalBrothers.
+                    </p>
+                </div>
+                <div class="col-xl-4 col-md-4 col-sm-12" style="align-self: center;">
+                    <ul class="d-inline-flex " style="list-style: none;">
+                        <li ><a class="mr-2 text-white" href="./terms-and-conditions" target="_blank">Terms & Conditions</a></li>
+                        <li ><a class="mr-2 text-white" href="./privacy-policy" target="_blank">Privacy Policy</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+	<!-- Floating Social Media bar Starts -->
+				<div class="float-sm">
+					<div class="fl-fl float-fb d-flex">
+						<div class="facebook"> <i class="fab fa-facebook-f "></i></div>
+						<a href="https://www.facebook.com/sharer?u=
+						about-us						" target="_blank">Facebook</a>
+					</div>
+					<div class="fl-fl float-tw d-flex">
+						<div class="twitter"> <i class="fab fa-twitter"></i></div>
+						<a href="https://twitter.com/intent/tweet?text=about-us" target="_blank">Twitter</a>
+					</div>
+					<div class="fl-fl float-gp d-flex">
+						<div class="link_in"> <i class="fab fa-linkedin-in"></i></div>
+						<a href="https://www.linkedin.com/shareArticle?mini=true&url=about-us" target="_blank">Linkedin</a>
+					</div>
+
+				</div>
+				<!-- Floating Social Media bar Ends -->
+<style>
+	.twitter {
+		font: normal normal 10px Arial;
+		text-align: center;
+		color: #998578;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+	}
+
+	.float-sm svg {
+		font-size: 25px;
+		margin: 7px 14px;
+		color: #000;
+	}
+
+	.twitter {
+		color: #000000;
+		text-decoration: none;
+		display: block;
+		/* padding: 14px; */
+		-webkit-transition: all .25s ease;
+		-moz-transition: all .25s ease;
+		-ms-transition: all .25s ease;
+		-o-transition: all .25s ease;
+		transition: all .25s ease;
+	}
+
+	.twitter:hover {
+		color: #FF7D6D;
+		text-decoration: none;
+	}
+
+
+	/* Floating Social Media Bar Style Starts Here */
+
+	.fl-fl {
+		background: #fff;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		/* padding: 4px; */
+		width: 200px;
+		position: fixed;
+		right: -153px;
+		z-index: 1000;
+		font: normal normal 10px Arial;
+		-webkit-transition: all .25s ease;
+		-moz-transition: all .25s ease;
+		-ms-transition: all .25s ease;
+		-o-transition: all .25s ease;
+		transition: all .25s ease;
+	}
+
+	.fa {
+		font-size: 20px;
+		color: #fff;
+		padding: 10px 0;
+		width: 40px;
+		margin-left: 8px;
+	}
+
+	.fl-fl:hover {
+		right: 0;
+	}
+
+	.fl-fl:hover>.facebook,
+	.fl-fl:hover>.facebook svg {
+		background-color: #3b5998;
+		margin-right: 15px;
+		color: #fff;
+	}
+
+	.fl-fl:hover>.twitter,
+	.fl-fl:hover>.twitter svg {
+		background-color: #00acee;
+		margin-right: 15px;
+		color: #fff;
+	}
+
+	.fl-fl:hover>.link_in,
+	.fl-fl:hover>.link_in svg {
+		background-color: #0e76a8;
+		margin-right: 15px;
+		color: #fff;
+	}
+
+	.fl-fl a {
+		margin-left: 15px;
+		color: #000 !important;
+		text-decoration: none;
+		text-align: center;
+		line-height: 43px !important;
+		vertical-align: top !important;
+		font-weight: 600;
+	}
+
+	.float-fb {
+		top: 160px;
+	}
+
+	.float-tw {
+		top: 215px;
+	}
+
+	.float-gp {
+		top: 270px;
+	}
+
+	.float-rs {
+		top: 325px;
+	}
+
+	.float-ig {
+		top: 380px;
+	}
+
+	.float-pn {
+		top: 435px;
+	}
+
+	/* Floating Social Media Bar Style Ends Here */
+</style>
+</footer>
+<!-- Footer -->
+
+<script rel="preload" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    'use strict';
+
+    var bt_initHeader;
+
+    (function($) {
+
+        var hasCentralMenu, verticalMenuEnabled, belowMenu,
+            fullScreenMenuEnabled;
+
+        function initial_header_setup() {
+
+            var isTouchDevice = ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator
+                .msMaxTouchPoints > 0);
+
+            if (isTouchDevice) {
+                $('html').addClass('touch');
+                $('html').removeClass('no-touch');
+            } else {
+                $('html').addClass('no-touch');
+                $('html').removeClass('touch');
+            }
+
+            hasCentralMenu = $('body').hasClass('btMenuCenterEnabled');
+            verticalMenuEnabled = $('body').hasClass('LeftEnabled') || $('body').hasClass(
+                'RightEnabled');
+            fullScreenMenuEnabled = $('body').hasClass('btMenuFullScreenCenter');
+
+
+
+            if (typeof window.btStickyOffset == 'undefined') window.btStickyOffset = 250;
+            if (typeof window.responsiveResolution == 'undefined') window.responsiveResolution = '1200';
+        }
+
+        function final_header_setup() {
+
+            $('li.btMenuWideDropdown').addClass(function() {
+                return 'btMenuWideDropdownCols-' + $(this).children('ul').children('li').length;
+            });
+
+            $('li.btMenuWideDropdown').each(function() {
+                var maxChildItems = 0;
+                $(this).find('> ul > li > ul').each(function(index) {
+                    if ($(this).children().length > maxChildItems) {
+                        maxChildItems = $(this).children().length;
+                    }
+                });
+                $(this).find('> ul > li > ul').each(function(index) {
+                    var bt_menu_base_length = $(this).children().length;
+                    if (bt_menu_base_length < maxChildItems) {
+                        for (var i = 0; i < maxChildItems - bt_menu_base_length; i++) {
+                            $(this).append(
+                                '<li class="btEmptyParentElement"><a class="btEmptyElement">&nbsp;</a></li>'
+                            );
+                        }
+                    }
+                });
+            });
+
+            /* Show hide menu */
+
+            $('.btHorizontalMenuTrigger, .bt-horizontal-menu-trigger').on('click', function() {
+                $('body').toggleClass('btShowMenu');
+                return false;
+            });
+
+            $('.bt-fullscreen-menu-trigger').on('click', function() {
+                $('body').toggleClass('bt-show-fullscreen-menu');
+                return false;
+            });
+
+            /* responsive menu toggler */
+
+            $('.btVerticalMenuTrigger, .bt-vertical-menu-trigger').on('click', function() {
+                $('body').toggleClass('On');
+                return false;
+            });
+        }
+
+        function top_tools_search() {
+            /* Top tools search */
+
+            $('.mainHeader .btSearchInner').prependTo('body').addClass('btFromTopBox');
+
+            $('.mainHeader .widget_search').addClass('btIconWidget');
+            $('.mainHeader .btSearch, .btFromTopBox .btSearchInnerClose').on('click', function() {
+                $('body').toggleClass('btTopToolsSearchOpen');
+
+                if ($('body').hasClass('btTopToolsSearchOpen')) {
+                    if ($('.btSearchInnerContent form input:text:visible:first').length)
+                        boldthemes_requestTimeout(add_focus_to_serach, 500);
+                }
+                return false;
+            });
+
+        }
+
+        function add_focus_to_serach() {
+            // Focus to search field
+            $('.btSearchInnerContent form input:text:visible:first').focus();
+        }
+
+        function divide_menu() {
+
+            if ($('.btTextLogo').length) {
+                var logoWidth = $('.mainHeader .logo').width();
+            } else {
+                if ($('.mainHeader .logo .btMainLogo').data('hw')) {
+                    var logoWidth = $('.mainHeader .logo').height() * $('.mainHeader .logo .btMainLogo').data('hw');
+                } else {
+                    var logoWidth = $('.mainHeader .logo').height() * 3;
+                }
+
+            }
+
+            $('.menuPort nav').addClass('leftNav');
+            $('.menuPort').append('<nav class="rightNav"><ul></ul></nav>');
+            var halfItems = Math.ceil($('.menuPort nav.leftNav ul>li:not(li li)').length * .5);
+            $('.menuPort nav.rightNav > ul').append($('.menuPort nav.leftNav > ul > li').slice(halfItems));
+            $('.menuPort nav.leftNav > ul > li').slice(halfItems).remove();
+
+            $('.mainHeader .logo').css('transform', 'translateX(' + Math.round(-logoWidth * .5) + 'px)');
+            $('.mainHeader .logo').css('width', logoWidth + 'px');
+            $('.menuPort nav.leftNav').attr('style', '--margin:' + Math.round(logoWidth * .5) + 'px;margin-right:' +
+                Math.round(logoWidth * .5) + 'px;');
+            $('.menuPort nav.rightNav').attr('style', '--margin:' + Math.round(logoWidth * .5) + 'px;margin-left:' +
+                Math.round(logoWidth * .5) + 'px;');
+        }
+
+        /* Activate sticky function and call */
+
+        function boldthemes_activate_sticky() {
+
+            var fromTop = $(window).scrollTop();
+            if (fromTop > window.btStickyOffset && !$('body').hasClass('btStickyHeaderActive')) {
+                $('body').addClass('btStickyHeaderActive');
+                /* 
+                window.bt_openHeader = setTimeout( function() { 
+                    boldthemes_activate_sticky_open(); 
+                }, 500 );
+                */
+                boldthemes_requestTimeout(boldthemes_activate_sticky_open, 500);
+            } else if (fromTop <= window.btStickyOffset && $('body').hasClass('btStickyHeaderActive') && !$('body')
+                .hasClass('btStickyHeaderClosed')) {
+                $('body').addClass('btStickyHeaderClosed');
+                /*
+                window.bt_closeHeader = setTimeout( function() { 
+                    boldthemes_activate_sticky_close() 
+                }, 250 );
+                */
+                boldthemes_requestTimeout(boldthemes_activate_sticky_close, 500);
+            }
+        }
+
+        function boldthemes_activate_sticky_open() {
+            $('body').addClass('btStickyHeaderOpen');
+        }
+
+        function boldthemes_activate_sticky_close() {
+            $('body').removeClass('btStickyHeaderActive btStickyHeaderOpen btStickyHeaderClosed');
+        }
+
+        window.boldthemes_requestTimeout = function(fn, delay) {
+            if (!window.requestAnimationFrame &&
+                !window.webkitRequestAnimationFrame &&
+                !(window.mozRequestAnimationFrame && window.mozCancelRequestAnimationFrame) &&
+                // Firefox 5 ships without cancel support
+                !window.oRequestAnimationFrame &&
+                !window.msRequestAnimationFrame)
+                return window.setTimeout(fn, delay);
+
+            var start = new Date().getTime(),
+                handle = new Object();
+
+            function loop() {
+                var current = new Date().getTime(),
+                    delta = current - start;
+
+                delta >= delay ? fn.call() : handle.value = boldthemes_requestAnimFrame(loop);
+            };
+
+            handle.value = boldthemes_requestAnimFrame(loop);
+            return handle;
+        };
+
+        window.boldthemes_requestAnimFrame = (function() {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function( /* function */ callback, /* DOMElement */ element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function init_menu() {
+
+            initial_header_setup();
+
+            if (!fullScreenMenuEnabled) {
+                if (verticalMenuEnabled) {
+                    if ($('body').hasClass('')) $('body');
+                    if ($('body').hasClass('')) $('body');
+                } else {
+                    if ($('body').hasClass('')) $('body');
+                    if ($('body').hasClass('')) $('body').addClass(' ');
+                    if ($('body').hasClass('btMenuCenterBelowEnabled')) $('body').addClass(
+                        'btMenuCenterBelow ');
+                    if ($('body').hasClass('btMenuCenterEnabled')) $('body').addClass(
+                        'btMenuCenter');
+                    /* Switch to vertical */
+
+                }
+            }
+
+            // Move content below menu, must be donne after menu switch
+            if (!belowMenu) {
+                boldthemes_calculate_content_padding();
+            }
+
+            setTimeout(function() {
+                $('body').addClass('btMenuInitFinished');
+            }, 100);
+
+
+
+            /* Menu split */
+
+            if (hasCentralMenu) divide_menu();
+
+            /* Menu sub togglers */
+
+            $('.menuPort ul ul').parent().prepend('<div class="subToggler"></div>');
+
+            $('.menuPort ul li').on('mouseenter mouseleave', function(e) {
+                if ($('body').hasClass('') || $('body').hasClass('btMenuFullScreenCenter') ||
+                    $('html').hasClass('touch')) {
+                    return false;
+                }
+                e.preventDefault();
+                $(this).siblings().removeClass('on');
+                $(this).toggleClass('on');
+            });
+
+            $('.menuPort ul.menu').on('mouseenter mouseleave', function(e) {
+                if ($('body').hasClass('') || $('body').hasClass('') ||
+                    $('html').hasClass('touch')) {
+                    return false;
+                }
+                $(this).toggleClass('hover');
+            });
+
+            $('div.subToggler').on('click', function(e) {
+                var parent_item = $(this).parent();
+                parent_item.siblings().removeClass('on');
+                parent_item.toggleClass('on');
+                if (parent_item.parent().hasClass('menu')) parent_item.parent().toggleClass('hover');
+                if ($('body').hasClass('')) {
+                    parent_item.find('ul').first().slideToggle(200);
+                }
+                return false;
+            });
+
+            final_header_setup();
+
+        }
+
+        /* Calculate content padding for not below menu */
+
+        function boldthemes_calculate_content_padding() {
+            if (!belowMenu) {
+                if ($(window).width() < window.responsiveResolution || verticalMenuEnabled ||
+                    fullScreenMenuEnabled) {
+                    $(' .bt-content-wrap').css('padding-top', $(
+                        '.bt-vertical-header-top').height() + 'px');
+                } else if (!$('body').hasClass('btStickyHeaderActive')) {
+                    $('.btContentWrap, .bt-content-wrap').css('padding-top', $('.mainHeader').height() + 'px');
+                }
+            }
+        }
+
+        function reinit_menu() {
+            top_tools_search();
+            setTimeout(function() {
+                init_menu();
+            }, 100);
+            boldthemes_calculate_content_padding();
+        }
+
+        $(window).on('load', function() {
+            boldthemes_calculate_content_padding();
+        });
+
+        bt_initHeader = reinit_menu;
+        top_tools_search();
+        init_menu();
+        // responsive_menu_handler();
+
+
+    })(jQuery);
+    AOS.init();
+
+
+
+
+    let delyAnimation = document.querySelectorAll('[data-aos]');
+    for (let i = 0; i < delyAnimation.length; i++) {
+        delyAnimation[i].setAttribute('data-aos-duration', '700');
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+</script>
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+
+{% endblock %} 

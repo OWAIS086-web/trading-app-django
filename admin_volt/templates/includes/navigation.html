@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="dashboard-heading">
+    <h1 class="dashboard-heading-h1">Priority Gold Plus Dashboard</h1>
+</div>
+<div class="dropdown-left-side">
+    
+
+    
+<div class="dropdown-profile">
+
+                                    <button class="dropbtn-profile">
+                                        <img src={{ user.user_profile.profile_pic.url }} alt="Profile Picture" class="profile-pic-profile">
+
+                                    </button>
+                                    <div class="dropdown-content-profile">
+                                        <a href="{% url 'users:user_profile' %}" class="logout-profile"><i class="fa-solid fa-user"></i>Profile</a>
+                                        <a href="{% url 'settings' %}" class="logout-profile"><i class="fa-solid fa-gear"></i>Setting</a>
+                                        {% comment %} <a href="{% url 'password_change' %}" class="logout-profile"><i class="fa fa-cog"></i>Setting</a> {% endcomment %}
+                                        <a href="{% url 'logout' %}" onclick="openLogoutPopup()" class="logout-profile"><img src={% static 'img/logout.png' %}>Logout</a>
+                                        {% comment %} <a id="logoutLink" class="logout-profile" href="{% url 'account_logout' %}"
+                                        onclick="openPopup('{% static 'users/templates/account/signup.html' %}?='+ Date.now())"><img
+                                            src={% static 'img/logout.png' %}>LogOut</a>                                             {% endcomment %}
+                                        {% comment %} <a href="javascript:void(1);" onclick="openLogoutPopup()" class="logout-profile"><img src={% static 'img/logout.png' %}>LogOut</a> {% endcomment %}
+                                    </div>
+                                    <img src={% static 'img/path-4427.svg' %} alt="Profile Picture" class="arrow">
+</div>
+                                </div>
+
+
+          <div class="popup2" id="popup2">
+        <h2>Confirm That</h2>
+        <h2>You Wish To Log Out.</h2>
+        <div class="buttons">
+            <a class="save-now" href="{% url 'admin:logout' %}">
+
+           Yes, Sure
+             </a>
+            <button class="cancel" onclick="closePopup2()">Not Now</button>
+        </div>
+    </div>
+
+

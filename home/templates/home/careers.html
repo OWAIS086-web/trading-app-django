@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "Careers | Priority Gold" %}{% endblock %}
+{% block extra_head %} 
+<link rel="stylesheet" href="{% static 'css/career.css' %}">
+
+{% endblock %}
+
+{% block banner-content %} 
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Careers</h1>
+</div>
+{% endblock %}
+
+{% block body-content %}
+<div class="container">
+    <div class="center-text">
+        <p class="main-paragraph">We are looking for people who have qualities of leadership, integrity,
+            competitiveness and ownership. If you feel you have what it takes to add to our valuable human resource,
+            have the qualifications and necessary experience, then apply as per following steps:</p>
+        <hr class="horizontal-line">
+        <div class="card-container">
+            <div class="card">
+                <h2>Assistant Manager</h2>
+                <p class="card-subheading">Joint Inspection Team Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <h2>Officer</h2>
+                <p class="card-subheading">Joint Inspection Team Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <h2>Technical Information</h2>
+                <p class="card-subheading">Joint Inspection Team Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <h2>Monitoring Unit</h2>
+                <p class="card-subheading">Market Surveillance, Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <h2>Assistant Manager</h2>
+                <p class="card-subheading">Joint Inspection Team Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <h2>Officer</h2>
+                <p class="card-subheading">Joint Inspection Team Regulatory Affairs Department</p>
+                <p class="card-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="outline-btn">Apply Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white">
+    <div class="container container-container">
+        <div class="image-container">
+            <img src={% static 'img/group-12207.png' %} alt="Image error">
+            <div class="content-container">
+                <h1 class="main-heading-container">Get Started</h1>
+                <h1 class="sub-heading-container">with Priority Gold</h1>
+                <p class="paragraph-container">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                    ipsum
+                    dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                    adipiscing
+                    elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <button class="my-button-container">Get Started</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-section" style="background-color: white; font-family: 'myFont-Medium';">
+    <p>Featured and seen in</p>
+    <div class="image-row">
+        <img src={% static 'img/circle.png' %} alt="Image  error">
+        <img src={% static 'img/earth-2.0.png' %} alt="Image  error">
+        <img src={% static 'img/solaytic.png' %} alt="Image  error">
+        <img src={% static 'img/kyan.png' %} alt="Image  error">
+        <img src={% static 'img/treva.png' %} alt="Image error">
+    </div>
+    <br>
+</div>
+<div style="background-color: white;"><br><br></div>
+
+{% endblock %}

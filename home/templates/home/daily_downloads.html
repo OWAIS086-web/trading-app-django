@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% comment %} {% block head_title %}{% trans "Daily Downloads | Priority Gold" %}{% endblock %} {% endcomment %}
+{% block head_title %}{{ head_title }}{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/download.css' %}">
+{% endblock %}
+{% block banner-content %}
+<div class="banner">
+    <img src={% static 'img/group-12339.png' %} class="image-right" alt="Banner Image error">
+    <h1 class="banner-heading">Daily Downloads</h1>
+</div>
+{% endblock %}
+{% block body-content %}
+<div class="bg-white banneer">
+    <div class="container container-new">
+        <div class="heading-section-card">
+            <div class="search-bar">
+                <div>
+                    <label for="dateInput" class="label-search">Search By Date</label>
+                    <div class="input-container">
+                        <input type="date" id="dateInput" class="custom-date-input" value="2022-05-24">
+                        <span><img src={% static 'img/path-4397.svg' %} class="arrow-down-img" alt="Image error"></span>
+                        <img src={% static 'img/group-12346.svg' %} alt="Image error">
+                    </div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <div>
+                    <label for="dateInput" class="label-search2">Sort By</label>
+                    <div class="input-container">
+                        <div class="dropdown">
+                            <select class="dropdown-search2" id="dropdownMenu">
+                                <option class="options-search2" value="option1">Newest Upload</option>
+                                <option class="options-search2" value="option2">Option 2</option>
+                                <option class="options-search2" value="option3">Option 3</option>
+                            </select>
+                            <span><img src={% static 'img/path-4397.svg' %} class="arrow-down-img2" alt="Image error"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/zip.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side" style="font-family: 'myFont-Bold'; font-size: 11px;">Market Summary (Closing)</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>ZIP File</p>
+                    <button class="download-now-btn active">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/pdf.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side2" style="font-family: 'myFont-Bold'; font-size: 11px;">Closing Rate Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>PDF File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/doc.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side3" style="font-family: 'myFont-Bold'; font-size: 11px;">Off Market Transaction Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>DOC File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/pdf.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side2" style="font-family: 'myFont-Bold'; font-size: 11px;">Closing Rate Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>PDF File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/doc.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side3" style="font-family: 'myFont-Bold'; font-size: 11px;">Off Market Transaction Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>DOC File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/pdf.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side2" style="font-family: 'myFont-Bold'; font-size: 11px;">Closing Rate Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>PDF File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-market-summary-every">
+            <div class="card-market-summary">
+                <div class="row card-row-market-summary">
+                    <img src={% static 'img/doc.png' %} class="side-image" alt="Image error">
+                    <h3 class="card-text-market-summary-side3" style="font-family: 'myFont-Bold'; font-size: 11px;">Off Market Transaction Summary</h3>
+                    <p class="card-text-market-summary-format"><span style="font-family: myFont-Bold; padding-top:4px; padding-right:5px;   font-size: 11px;">Format:</span>DOC File</p>
+                    <button class="download-now-btn">Download Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <button class="load-more-btn">Load More</button>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: white;"><br><br></div>
+</div>
+{% endblock %}
